@@ -1,0 +1,124 @@
+[
+    {
+        "employee_id": 1007,
+        "name": "Sachin",
+        "experience": 5,
+        "phone": 976539843,
+        "email": "Sachin06@gmail.com ",
+        "skills": [
+            {
+                "skill_id": 1,
+                "skill": "Java"
+            },
+            {
+                "skill_id": 2,
+                "skill": "c"
+            },
+            {
+                "skill_id": 3,
+                "skill": "CPP"
+            }
+        ]
+    },
+    {
+        "employee_id": 1003,
+        "name": "vinitha ",
+        "experience": "7",
+        "phone": 7542189788,
+        "email": "vini06@gmail.com ",
+        "skills": [
+            {
+                "skill_id": 5,
+                "skill": "HTML"
+            },
+            {
+                "skill_id": 1,
+                "skill": "Java"
+            }
+        ]
+    },
+    {
+        "employee_id": 1004,
+        "name": "nivin",
+        "experience": "8",
+        "phone": 7542186722,
+        "email": "nivi06@gmail.com ",
+        "skills": [
+            {
+                "skill_id": 5,
+                "skill": "HTML"
+            }
+        ]
+    },
+    {
+        "employee_id": 1001,
+        "name": "smitha ",
+        "experience": "13",
+        "phone": 2345769788,
+        "email": "smitha06@gmail.com ",
+        "skills": [
+            {
+                "skill_id": 5,
+                "skill": "HTML"
+            },
+            {
+                "skill_id": 1,
+                "skill": "Java"
+            },
+            {
+                "skill_id": 2,
+                "skill": "C"
+            },
+            {
+                "skill_id": 3,
+                "skill": "CPP"
+            },
+            {
+                "skill_id": 4,
+                "skill": "Python"
+            }
+        ]
+    },
+    {
+        "employee_id": 1002,
+        "name": "kishore",
+        "experience": "1",
+        "phone": 2345769864,
+        "email": "kishore06@gmail.com ",
+        "skills": [
+            {
+                "skill_id": 5,
+                "skill": "HTML"
+            }
+        ]
+    },
+    {
+        "employee_id": 1006,
+        "name": "karun",
+        "experience": "3",
+        "phone": 2345767886,
+        "email": "kaurn88@gmail.com ",
+        "skills": [
+            {
+                "skill_id": 5,
+                "skill": "HTML"
+            },
+            {
+                "skill_id": 1,
+                "skill": "Java"
+            },
+            {
+                "skill_id": 4,
+                "skill": "Python"
+            }
+        ]
+    },
+    {
+        "employee_id": 1005,
+        "name": "pravin",
+        "experience": "0",
+        "phone": 9712345788,
+        "email": "pravi@gmail.com ",
+        "skills": []
+    }
+]

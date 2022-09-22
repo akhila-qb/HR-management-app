@@ -1,0 +1,224 @@
+@charset "utf-8";
+/* CSS Document */
+ 
+/* CSS DocumentProject:  HR Management app
+----------------------------------------------------------------------------------------------------------*/
+ 
+/*------------------Layout,Table of Contents-----------------------------------------------------------------
+1. BASIC STYLING FOR COMMON HTML ELEMENTS
+2. TYPOS
+3. COMMON CSS CLASSES
+4. SKELETON
+5. HEADER SECTION
+6. BODY SECTION
+7. FOOTER SECTION
+-----------------------------------------------------------------------------------------------------------*/
+ 
+/*................................................
+    1. BASIC STYLING FOR COMMON HTML ELEMENTS
+.................................................*/
+body {
+  font-size: 16px;
+  background-color: #fff;
+  line-height: 30px;
+  
+}
+
+
+:root {
+  --black: #000000;
+  --purple: #856bfc;
+  --violet: #40388f;
+  --chocolate: #ce712f;
+  --brown: #b63737;
+}
+
+/*................................................
+    2. TYPOS
+.................................................*/
+
+/* poppins-regular - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/poppins-v20-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../fonts/poppins-v20-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/poppins-v20-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/poppins-v20-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/poppins-v20-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/poppins-v20-latin-regular.svg#Poppins') format('svg'); /* Legacy iOS */
+}
+
+/* poppins-500 - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/poppins-v20-latin-500.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../fonts/poppins-v20-latin-500.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/poppins-v20-latin-500.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/poppins-v20-latin-500.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/poppins-v20-latin-500.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/poppins-v20-latin-500.svg#Poppins') format('svg'); /* Legacy iOS */
+}
+
+/* poppins-800 - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 800;
+  src: url('../fonts/poppins-v20-latin-800.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../fonts/poppins-v20-latin-800.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/poppins-v20-latin-800.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/poppins-v20-latin-800.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/poppins-v20-latin-800.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/poppins-v20-latin-800.svg#Poppins') format('svg'); /* Legacy iOS */
+}
+
+/* poppins-900 - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 900;
+  src: url('../fonts/poppins-v20-latin-900.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('../fonts/poppins-v20-latin-900.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/poppins-v20-latin-900.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/poppins-v20-latin-900.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/poppins-v20-latin-900.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/poppins-v20-latin-900.svg#Poppins') format('svg'); /* Legacy iOS */
+}
+
+/*................................................
+    3. COMMON CSS CLASSES
+.................................................*/
+
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 15px;
+    font-family: Poppins;
+  }
+   
+  .flex-box {
+    display: flex;
+  }
+/*................................................
+    4. SKELETON
+.................................................*/
+ 
+/*................................................
+    5. HEADER SECTION
+.................................................*/
+#header {
+  border-bottom: 2px solid var(--brown);
+}  
+
+#logo {
+    width: 40%;
+    margin-left: 20px;
+  }
+   #logo_anchor {
+    width: 20%;
+    margin-top: 10px;
+   }
+
+   #main_heading {
+    color: var(--chocolate);
+    font-family: Poppins;
+    font-weight: 900;
+    margin: 4% 15%;
+   }
+
+   /*................................................
+    6. BODY SECTION
+.................................................*/
+#employee_list_top{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 0 2% 0;
+}
+#employee_list_top h4{
+  margin-top: 5%;
+}
+#employee_list_btns {
+  margin-top: 5%;
+}
+#filter_btn{
+  margin-right: 50px;
+}
+.employee_list_top_btns {
+  padding: 10px;
+}
+/* #table_border{
+  border: 2px solid var(--brown);
+  width: 100%;
+} */
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+table{
+  width: 100%;
+}
+#main{
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  padding-bottom: 5%;
+}
+#edit_col{
+  width: 5%;
+}
+#dlt_col{
+  width: 5%;
+}
+#id_col{
+  width: 15%;
+}
+#name_col{
+  width: 25%;
+}
+#skills_col{
+  width: 25%;
+}
+#exp_col{
+  width: 25%;
+}
+#sort_icon {
+  width: 30px;
+  right: 140px;
+  position: absolute;
+  top: 268px;
+}
+#edit_icon {
+  width: 30px;
+  left: 145px;
+  position: absolute;
+  top: 300px;
+}
+#delete_icon{
+  width: 29px;
+  left: 198px;
+  position: absolute;
+  top: 300px;
+}
+/*................................................
+    7. FOOTER SECTION
+.................................................*/
+
+#copyright {
+  border-top: 2px solid var(--brown);
+  text-align: center;
+  padding: 25px 0 10px 0;
+  font-size: 12px;
+  width: 100%;
+}
