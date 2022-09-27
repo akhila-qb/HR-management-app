@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
- 
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,112 +11,112 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300&display=swap" rel="stylesheet">
- 
+
 </head>
- 
+
 <body>
     <!--Header starts-->
-   
-        <header id="header">
-            <div class=" flex-box">
-                <a href="" id="logo_anchor"><img id="logo" alt="logo" src="../assets/images/logo.png"></a>
-                <h1 id="main_heading">Human Resource Portal</h3>
-            </div>
-        </header>
-        <script src="../js/employee.js"></script><script src="../js/employee.js"></script>  <main id="main" class="container">
-            <div id="employee_list_btns">
-                <!-- <button class="employee_list_top_btns" id="filter_btn">Apply Filter</button> -->
-                <select class="employee_list_top_btns" id="filter_btn">
-                    <option value="java">Java</option>
-                    <option value="c">C</option>
-                    <option value="cpp">CPP</option>
-                    <option value="python">Python</option>
-                    <option value="html">HTML</option>
-                    <option value="" selected hidden>Apply Filter</option>
-                </select>
-                <button class="employee_list_top_btns" id="add_btn">Add Employee</button>
-            </div>
-            <div id="table_border">
-                <table id="table">
-                    <thead id="thead">
-                        <tr>
-                            
-                            <th>
-                                <div id="id_col" class="table_col">
-                                    <h3>Employee ID</h3>
-                                    <img class="sort_icon" src="../assets/images/sort_icon.png" alt="sort icon">
-                                </div>
-                            </th>
-                            <th>
-                                <div id="name_col" class="table_col">
-                                    <h3>Name</h3>
-                                    <img class="sort_icon" src="../assets/images/sort_icon.png" alt="sort icon">
-                                </div>
-                            </th>
-                           
-                            <th id="skills_col" class="table_col">Skills</th>
-                            <th>
-                                <div id="exp_col" class="table_col">
-                                    <h3>Experience</h3>
-                                    <img class="sort_icon" src="../assets/images/sort_icon.png" alt="sort icon">
-                                </div>
-                            </th>
-                            <th class="table_col" id="actions_col">Actions</th>
-                        </tr>
-                    </thead>
 
-                    <tbody id="tbody"> 
-                        <!-- <tr>
-                            <td>1</td>
-                            <td>akv</td>
-                            <td>js,c,cpp</td>
-                            <td>1</td>
-                            <td>
-                                <img id="edit_icon" src="../assets/images/edit_icon.png" alt="edit icon">
-                                <img id="delete_icon" onclick="delete_msg()" src="../assets/images/delete_icon.png" alt="delete icon">
-                            </td>
-                        </tr> -->
-                    </tbody>
-                </table>
- 
-                <!-- delete confirm box -->
-                <div id="delete_modal">
-                    <p>Are you sure you want you want to delete the employee?</p>
-                    <div id="delete_btns">
-                        <button id="cancel_delete">Cancel</button>
-                        <button id="ok_delete">OK</button>
-                    </div>
+    <header id="header">
+        <div class=" flex-box">
+            <a href="" id="logo_anchor"><img id="logo" alt="logo" src="../assets/images/logo.png"></a>
+            <h1 id="main_heading">Human Resource Portal</h3>
+        </div>
+    </header>
+    <main id="main" class="container">
+        <div id="employee_list_btns">
+            <!-- <button class="employee_list_top_btns" id="filter_btn">Apply Filter</button> -->
+            <select class="employee_list_top_btns" id="filter_btn">
+                <option value="java">Java</option>
+                <option value="c">C</option>
+                <option value="cpp">CPP</option>
+                <option value="python">Python</option>
+                <option value="html">HTML</option>
+                <option value="" selected hidden>Apply Filter</option>
+            </select>
+            <button class="employee_list_top_btns" id="add_btn">Add Employee</button>
+        </div>
+        <div id="table_border">
+            <table id="table">
+                <thead id="thead">
+                    <tr>
+
+                        <th>
+                            <div id="id_col" class="table_col">
+                                <h3>Employee ID</h3>
+                                <img class="sort_icon" src="../assets/images/sort_icon.png" alt="sort icon">
+                            </div>
+                        </th>
+                        <th>
+                            <div id="name_col" class="table_col">
+                                <h3>Name</h3>
+                                <img class="sort_icon" src="../assets/images/sort_icon.png" alt="sort icon">
+                            </div>
+                        </th>
+
+                        <th id="skills_col" class="table_col">Skills</th>
+                        <th>
+                            <div id="exp_col" class="table_col">
+                                <h3>Experience</h3>
+                                <img class="sort_icon" src="../assets/images/sort_icon.png" alt="sort icon">
+                            </div>
+                        </th>
+                        <th class="table_col" id="actions_col">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tbody">
+                    <tr>
+                        <td>1</td>
+                        <td>akv</td>
+                        <td>js,c,cpp</td>
+                        <td>1</td>
+                        <td>
+                            <img id="edit_icon" src="../assets/images/edit_icon.png" alt="edit icon">
+                            <img id="delete_icon" src="../assets/images/delete_icon.png" alt="delete icon">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- delete confirm box -->
+            <div id="delete_modal">
+                <p>Are you sure you want you want to delete the employee?</p>
+                <div id="delete_btns">
+                    <button id="cancel_delete">Cancel</button>
+                    <button id="ok_delete">OK</button>
                 </div>
-        
-  
-                <!-- edit dialog box -->
-                <div id="my_modal" class="modal">
-                    <span class="close">&times;</span>
-                    <H1>New Employee</H1>
-                    <form>
-                        <div class="modal_content">
- 
-                            <div class="emp_input_box">
-                                <label for="emp_id">Employee ID</label>
-                                <input required placeholder="Enter employee ID" type="text" id="emp_id"
-                                    class="input_box" name="emp_id"><br><br>
-                            </div>
-                            <div class="emp_input_box">
-                                <label for="emp_name">Name</label>
-                                <input required placeholder="Enter name" type="text" id="emp_name" class="input_box"
-                                    name="emp_name"><br><br>
-                            </div>
-                            <div class="emp_input_box">
-                                <label for="emp_exp">Experience</label>
-                                <div class="first_container">                         <input required placeholder="Years of experience" type="number" id="emp_exp"
-                                    class="input_box" name="emp_exp"><br><br>
-                            </div>
-                            <div class="emp_input_box">
-                                <label for="emp_skills">Skills</label>
-                                <!-- <input required placeholder="Select skills" type="text" id="emp_skills" class="input_box"
-                            name="emp_skills"><br><br> -->
- 
-                                <select class="input_box" id="add_skill">
+            </div>
+
+
+            <!-- edit dialog box -->
+            <div id="my_modal" class="modal">
+                <span class="close">&times;</span>
+                <H1 id="dynamic_heading">Add Employee</H1>
+                <form>
+                    <div class="modal_content">
+
+                        <div class="emp_input_box">
+                            <label for="emp_id">Employee ID</label>
+                            <input required placeholder="Enter employee ID" type="text" id="emp_id" class="input_box"
+                                name="emp_id"><br><br>
+                        </div>
+                        <div class="emp_input_box">
+                            <label for="emp_name">Name</label>
+                            <input required placeholder="Enter name" type="text" id="emp_name" class="input_box"
+                                name="emp_name"><br><br>
+                        </div>
+                        <div class="emp_input_box">
+                            <label for="emp_exp">Experience</label>
+                            <input required placeholder="Years of experience" type="number" id="emp_exp"
+                                class="input_box" name="emp_exp"><br><br>
+                        </div>
+                        <div class="emp_input_box">
+                            <label for="emp_skills">Skills</label>
+                            <!-- <input required placeholder="Select skills" type="text" id="emp_skills" class="input_box"
+                                name="emp_skills"><br><br> -->
+
+                            <select class="input_box" id="add_skill">
                                     <option value="java">Java</option>
                                     <option value="c">C</option>
                                     <option value="cpp">CPP</option>
@@ -124,44 +124,38 @@
                                     <option value="html">HTML</option>
                                     <option value="" selected hidden>Select Skills</option>
                                 </select>
- 
-                                <div id="display_skills_tag">
- 
-                                </div>
-                            </div>
-                            <div class="emp_input_box">
-                                <label for="emp_phone">Phone</label>
-                                <input required maxlength="10" pattern="[6-9]{1}[0-9]{9}"
-                                    placeholder="Enter phone number" type="tel" id="emp_phone" class="input_box"
-                                    name="emp_phone"><br><br>
-                            </div>
-                            <div class="emp_input_box">
-                                <label for="emp_mail">Email</label>
-                                <input required placeholder="Enter email" type="email" id="emp_mail" class="input_box"
-                                    name="emp_mail"><br><br>
+
+                            <div id="display_skills_tag">
+
                             </div>
                         </div>
-                        <div id="form_btns">
-                            <input type="reset" class="form_btns_button" id="cancel" value="CANCEL">
-                            <input type="submit" class="form_btns_button" id="save" value="SAVE">
+                        <div class="emp_input_box">
+                            <label for="emp_phone">Phone</label>
+                            <input required maxlength="10" pattern="[6-9]{1}[0-9]{9}" placeholder="Enter phone number"
+                                type="tel" id="emp_phone" class="input_box" name="emp_phone"><br><br>
                         </div>
-                    </form>
-                </div>
+                        <div class="emp_input_box">
+                            <label for="emp_mail">Email</label>
+                            <input required placeholder="Enter email" type="email" id="emp_mail" class="input_box"
+                                name="emp_mail"><br><br>
+                        </div>
+                    </div>
+                    <div id="form_btns">
+                        <input type="reset" class="form_btns_button" id="cancel" value="CANCEL">
+                        <input type="submit" class="form_btns_button" id="save" value="SAVE">
+                    </div>
+                </form>
             </div>
-        </main>
-        <!--Main ends-->
- 
-        <!--Footer starts-->
-        <footer id="copyright">
-            <p>Copyright @ 2020 HRM.CO, All Rights Reserved</p>
-        </footer>
-        <script src="../js/employee.js"></script>
+        </div>
+    </main>
+    <!--Main ends-->
+
+    <!--Footer starts-->
+    <footer id="copyright">
+        <p>Copyright @ 2020 HRM.CO, All Rights Reserved</p>
+    </footer>
+    <script src="../js/employee.js"></script>
     <!--Footer ends-->
 </body>
- 
+
 </html>
- 
- 
- 
- 
- 

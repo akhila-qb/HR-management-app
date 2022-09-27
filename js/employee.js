@@ -1,70 +1,61 @@
-
-//fetch data
-function get_employee_list(url, function_name) {
-    fetch(url)
-        .then(response => response.json())
-        .then(list => function_name(list))
+//get add employee modal
+let modal = document.querySelector('#my_modal');
+// Get the button that opens edit modal
+let btn = document.getElementById("add_btn");
+// Get the <span> element that closes the modal
+let span = document.getElementsByClassName("close")[0];
+// When the user clicks on add employee button, open the edit modal
+btn.onclick = function() {
+modal.style.display = "block";
+}
+// When the user clicks on <span> (x), close the edit modal
+span.onclick = function() {
+modal.style.display = "none";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+if (event.target == modal) {
+modal.style.display = "none";
+}
 }
 
-//to display details in table
-get_employee_list("../assets/json/employee_list.json", get_employee_details)
+//get update employee modal
+let update_modal = document.querySelector('#my_modal');
+// Get the button that opens update modal
+let update_btn = document.getElementById("edit_icon");
+// Get the <span> element that closes the update modal
+let update_span = document.getElementsByClassName("close")[0];
+//get heading
+let update_heading = document.getElementById("dynamic_heading")
+// When the user clicks on edit button, open the update modal
+update_btn.onclick = function() {
+update_modal.style.display = "block";
+update_heading.textContent="Update Employee";
 
-
-function get_employee_details(list) {
-    tbody = document.getElementById("tbody")
-    list.forEach(employee => {
-
-        //to display skills in table
-        // get_employee_list("../assets/json/skills.json", get_skill_details)
-        function get_skill_details(skill_list) {
-
-            const skill_name_array = employee.skills.map(element => {
-                for(let skill_obj of skill_list){
-
-                    if (skill_obj.skill_id == element) {
-                       // console.log(skill_obj.skill);
-                        return skill_obj.skill
-                    }
-                }
-            })
-            console.log(skill_name_array);
-            return skill_name_array
-        }
-
-
-        let tr = document.createElement("tr")
-        tr.innerHTML = ` <td>${employee.employee_id}</td>
-<td>${employee.name}</td>
-<td>${get_skill_details([
-            {
-                "skill_id": 1,
-                "skill": "Java"
-            },
-            {
-                "skill_id": 2,
-                "skill": "C"
-            },
-            {
-                "skill_id": 3,
-                "skill": "CPP"
-            },
-            {
-                "skill_id": 4,
-                "skill": "Python"
-            },
-            {
-                "skill_id": 5,
-                "skill": "HTML"
-            }
-        ]
-        )}</td>
-<td>${employee.experience}</td>
-<td>
-    <img id="edit_icon" src="../assets/images/edit_icon.png" alt="edit icon">
-    <img id="delete_icon" onclick="delete_msg()" src="../assets/images/delete_icon.png" alt="delete icon">
-</td>`
-        tbody.appendChild(tr)
-    })
+}
+// When the user clicks on <span> (x), close the edit modal
+update_span.onclick = function() {
+update_modal.style.display = "none";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+if (event.target == modal) {
+update_modal.style.display = "none";
+}
 }
 
+//get delete modal
+let delete_modal=document.getElementById("delete_modal")
+// Get the button that opens the delete modal
+let delete_icon=document.getElementById("delete_icon")
+// Get the button that closes the delete modal
+let cancel_icon=document.getElementById("cancel_delete")
+// When the user clicks on delete button, open the delete modal
+delete_icon.onclick = function() {
+delete_modal.style.display = "block";
+}
+// When the user clicks on cancel, close the delete modal
+cancel_icon.onclick = function() {
+delete_modal.style.display = "none";
+}
 
