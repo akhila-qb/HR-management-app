@@ -8,7 +8,7 @@
     <title>HR-homepage</title>
     <link rel="icon" type="image/x-icon" href="../assets/images/logo.png">
     <link rel="stylesheet" href="../assets/css/style.css">
-
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v6.2.0/css/all.css">
    
 
 </head>
@@ -19,12 +19,12 @@
     <header id="header">
         <div class=" flex-box">
             <a href="" id="logo_anchor"><img id="logo" alt="logo" src="../assets/images/logo.png"></a>
-            <h1 id="main_heading">Human Resource Portal</h3>
+            <h1 id="main_heading">Human Resource Portal</h1>
         </div>
     </header>
     <main id="main" class="container">
         <div id="employee_list_btns">
-            <!-- <button class="employee_list_top_btns" id="filter_btn">Apply Filter</button> -->
+            <button class="employee_list_top_btns" onclick="open_modal()" id="add_btn">Add Employee</button>
             <select class="employee_list_top_btns" id="filter_btn">
                 <option value="java">Java</option>
                 <option value="c">C</option>
@@ -33,7 +33,6 @@
                 <option value="html">HTML</option>
                 <option value="" selected hidden>Apply Filter</option>
             </select>
-            <button class="employee_list_top_btns" id="add_btn">Add Employee</button>
         </div>
         <div id="table_border">
             <table id="table">
@@ -71,26 +70,84 @@
                         <td>js,c,cpp</td>
                         <td>1</td>
                         <td>
-                            <img id="edit_icon" src="../assets/images/edit_icon.png" alt="edit icon">
-                            <img id="delete_icon" src="../assets/images/delete_icon.png" alt="delete icon">
+                            <i id="edit_icon" onclick="open_update_modal()" class="fa-solid fa-user-pen"></i>
+                            <!-- <img id="edit_icon" onclick="open_update_modal()" src="../assets/images/edit_icon.png" alt="edit icon"> -->
+                            <img id="delete_icon" onclick="open_dlt_modal()" src="../assets/images/delete_icon.png" alt="delete icon">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>akv</td>
+                        <td>js,c,cpp</td>
+                        <td>1</td>
+                        <td>
+                            <i id="edit_icon" onclick="open_update_modal()" class="fa-solid fa-user-pen"></i>
+                            <!-- <img id="edit_icon" onclick="open_update_modal()" src="../assets/images/edit_icon.png" alt="edit icon"> -->
+                            <img id="delete_icon" onclick="open_dlt_modal()" src="../assets/images/delete_icon.png" alt="delete icon">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>akv</td>
+                        <td>js,c,cpp</td>
+                        <td>1</td>
+                        <td>
+                            <i id="edit_icon" onclick="open_update_modal()" class="fa-solid fa-user-pen"></i>
+                            <!-- <img id="edit_icon" onclick="open_update_modal()" src="../assets/images/edit_icon.png" alt="edit icon"> -->
+                            <img id="delete_icon" onclick="open_dlt_modal()" src="../assets/images/delete_icon.png" alt="delete icon">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>akv</td>
+                        <td>js,c,cpp</td>
+                        <td>1</td>
+                        <td>
+                            <i id="edit_icon" onclick="open_update_modal()" class="fa-solid fa-user-pen"></i>
+                            <!-- <img id="edit_icon" onclick="open_update_modal()" src="../assets/images/edit_icon.png" alt="edit icon"> -->
+                            <img id="delete_icon" onclick="open_dlt_modal()" src="../assets/images/delete_icon.png" alt="delete icon">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>akv</td>
+                        <td>js,c,cpp</td>
+                        <td>1</td>
+                        <td>
+                            <i id="edit_icon" onclick="open_update_modal()" class="fa-solid fa-user-pen"></i>
+                            <!-- <img id="edit_icon" onclick="open_update_modal()" src="../assets/images/edit_icon.png" alt="edit icon"> -->
+                            <img id="delete_icon" onclick="open_dlt_modal()" src="../assets/images/delete_icon.png" alt="delete icon">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>akv</td>
+                        <td>js,c,cpp</td>
+                        <td>1</td>
+                        <td>
+                            <i id="edit_icon" onclick="open_update_modal()" class="fa-solid fa-user-pen"></i>
+                            <!-- <img id="edit_icon" onclick="open_update_modal()" src="../assets/images/edit_icon.png" alt="edit icon"> -->
+                            <img id="delete_icon" onclick="open_dlt_modal()" src="../assets/images/delete_icon.png" alt="delete icon">
                         </td>
                     </tr>
                 </tbody>
             </table>
 
             <!-- delete confirm box -->
+   <div id="overlay_delete">
             <div id="delete_modal">
                 <p>Are you sure you want you want to delete the employee?</p>
                 <div id="delete_btns">
-                    <button id="cancel_delete">Cancel</button>
+                    <button onclick="close_dlt_modal()" id="cancel_delete">Cancel</button>
                     <button id="ok_delete">OK</button>
                 </div>
             </div>
-
-
+   
+</div>
             <!-- edit dialog box -->
-            <div id="my_modal" class="modal">
-                <span class="close">&times;</span>
+            <div id="overlay">
+            <div id="main_modal" class="modal">
+                <span class="close" onclick="close_modal()">&times;</span>
                 <H1 id="dynamic_heading">Add Employee</H1>
                 <form>
                     <div class="modal_content">
@@ -140,10 +197,11 @@
                         </div>
                     </div>
                     <div id="form_btns">
-                        <input type="reset" class="form_btns_button" id="cancel" value="CANCEL">
+                        <input type="reset" class="form_btns_button" id="cancel" onclick="close_modal()" value="CANCEL">
                         <input type="submit" class="form_btns_button" id="save" value="SAVE">
                     </div>
                 </form>
+            </div>
             </div>
         </div>
     </main>
