@@ -4,6 +4,8 @@ let modal = document.querySelector('#my_modal');
 let btn = document.getElementById("add_btn");
 // Get the <span> element that closes the modal
 let span = document.getElementsByClassName("close")[0];
+//get close button
+let close_btn=document.getElementById("cancel")
 // When the user clicks on add employee button, open the edit modal
 btn.onclick = function() {
 modal.style.display = "block";
@@ -12,6 +14,10 @@ modal.style.display = "block";
 span.onclick = function() {
 modal.style.display = "none";
 }
+// When the user clicks on cancel, close the edit modal
+close_btn.onclick = function() {
+    modal.style.display = "none";
+    }
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
 if (event.target == modal) {
@@ -25,6 +31,8 @@ let update_modal = document.querySelector('#my_modal');
 let update_btn = document.getElementById("edit_icon");
 // Get the <span> element that closes the update modal
 let update_span = document.getElementsByClassName("close")[0];
+//get update close button
+let update_close_btn=document.getElementById("cancel")
 //get heading
 let update_heading = document.getElementById("dynamic_heading")
 // When the user clicks on edit button, open the update modal
@@ -37,6 +45,10 @@ update_heading.textContent="Update Employee";
 update_span.onclick = function() {
 update_modal.style.display = "none";
 }
+// When the user clicks on cancel, close the update modal
+update_close_btn.onclick = function() {
+ update_modal.style.display = "none";
+    }
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
 if (event.target == modal) {

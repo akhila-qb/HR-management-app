@@ -142,7 +142,7 @@ body {
    #main_heading {
     color: var(--chocolate);
     font-family: Poppins;
-    font-weight: 900;
+    font-weight: 500;
     margin: 4% 15%;
     font-size: 45px;
    }
@@ -238,12 +238,16 @@ table{
   display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+   
 }
 .table_col h3{
   margin: 0;
+  font-weight: 400;
+  padding-left: 10px;
 }
 #skills_col, #actions_col{
   padding: 3px 0 3px 10px;
+  font-weight: 400;
 } 
 /* #id_col{
   width: 15%;
@@ -397,7 +401,7 @@ table{
   color: #aaa;
   float: right;
   font-size: 50px;
-  font-weight: bold;
+  font-weight: normal;
   margin: 10px;
 }
 .close:hover,
