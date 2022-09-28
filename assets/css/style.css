@@ -1,0 +1,534 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* CSS DocumentProject:  HR Management app
+----------------------------------------------------------------------------------------------------------*/
+
+/*------------------Layout,Table of Contents-----------------------------------------------------------------
+1. BASIC STYLING FOR COMMON HTML ELEMENTS
+2. TYPOS
+3. COMMON CSS CLASSES
+4. SKELETON
+5. HEADER SECTION
+6. BODY SECTION
+7. FOOTER SECTION
+-----------------------------------------------------------------------------------------------------------*/
+
+/*................................................
+    1. BASIC STYLING FOR COMMON HTML ELEMENTS
+.................................................*/
+body {
+  font-size: 16px;
+  background-color: #fff;
+  line-height: 32px;
+  margin: 0;
+
+}
+
+
+:root {
+  --black: #000000;
+  --darkOrange: #ddac89;
+  --lightOrange: #f1d1ba;
+  --chocolate: #dc8242;
+  --brown: #b63737;
+  --grey: #9094b1;
+  --blue: #a8d8e2;
+  --cream: #e7e9da;
+  --wheat: #f5deb3;
+  --white: #fff;
+}
+
+/*................................................
+    2. TYPOS
+.................................................*/
+
+/* poppins-regular - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/poppins-v20-latin-regular.eot');
+  /* IE9 Compat Modes */
+  src: local(''),
+    url('../fonts/poppins-v20-latin-regular.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */
+    url('../fonts/poppins-v20-latin-regular.woff2') format('woff2'),
+    /* Super Modern Browsers */
+    url('../fonts/poppins-v20-latin-regular.woff') format('woff'),
+    /* Modern Browsers */
+    url('../fonts/poppins-v20-latin-regular.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+    url('../fonts/poppins-v20-latin-regular.svg#Poppins') format('svg');
+  /* Legacy iOS */
+}
+
+/* poppins-500 - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/poppins-v20-latin-500.eot');
+  /* IE9 Compat Modes */
+  src: local(''),
+    url('../fonts/poppins-v20-latin-500.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */
+    url('../fonts/poppins-v20-latin-500.woff2') format('woff2'),
+    /* Super Modern Browsers */
+    url('../fonts/poppins-v20-latin-500.woff') format('woff'),
+    /* Modern Browsers */
+    url('../fonts/poppins-v20-latin-500.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+    url('../fonts/poppins-v20-latin-500.svg#Poppins') format('svg');
+  /* Legacy iOS */
+}
+
+/* poppins-800 - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 800;
+  src: url('../fonts/poppins-v20-latin-800.eot');
+  /* IE9 Compat Modes */
+  src: local(''),
+    url('../fonts/poppins-v20-latin-800.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */
+    url('../fonts/poppins-v20-latin-800.woff2') format('woff2'),
+    /* Super Modern Browsers */
+    url('../fonts/poppins-v20-latin-800.woff') format('woff'),
+    /* Modern Browsers */
+    url('../fonts/poppins-v20-latin-800.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+    url('../fonts/poppins-v20-latin-800.svg#Poppins') format('svg');
+  /* Legacy iOS */
+}
+
+/* poppins-900 - latin */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 900;
+  src: url('../fonts/poppins-v20-latin-900.eot');
+  /* IE9 Compat Modes */
+  src: local(''),
+    url('../fonts/poppins-v20-latin-900.eot?#iefix') format('embedded-opentype'),
+    /* IE6-IE8 */
+    url('../fonts/poppins-v20-latin-900.woff2') format('woff2'),
+    /* Super Modern Browsers */
+    url('../fonts/poppins-v20-latin-900.woff') format('woff'),
+    /* Modern Browsers */
+    url('../fonts/poppins-v20-latin-900.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+    url('../fonts/poppins-v20-latin-900.svg#Poppins') format('svg');
+  /* Legacy iOS */
+}
+
+/*................................................
+    3. COMMON CSS CLASSES
+.................................................*/
+
+.container {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 15px;
+  font-family: Poppins;
+  /* display: flex;
+    flex-wrap: wrap;
+    flex-direction: column; */
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  /* height: 100%; */
+  padding-bottom: 1%;
+}
+
+.first_container {
+  flex-wrap: wrap;
+  flex-direction: column;
+  display: flex;
+}
+
+.flex-box {
+  display: flex;
+}
+
+/*................................................
+    4. SKELETON
+.................................................*/
+
+/*................................................
+    5. HEADER SECTION
+.................................................*/
+#header {
+  border-bottom: 2px solid var(--brown);
+  width: 100%;
+  height: 90px;
+}
+
+#logo {
+  width: 45%;
+  padding: 5px 0 0 5px;
+}
+
+#logo_anchor {
+  width: 13%;
+}
+
+#main_heading {
+  color: var(--chocolate);
+  font-family: Poppins;
+  font-weight: 400;
+  margin: 0 auto;
+  font-size: 45px;
+  padding-top: 35px;
+  padding-right: 160px;
+}
+
+/*................................................
+    6. BODY SECTION
+.................................................*/
+
+#main_content_box {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+#employee_list_top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4%;
+  width: 100%;
+  margin: 0 auto;
+  height: 20vh;
+  align-items: center;
+}
+
+#employee_list_top h4 {
+  margin-top: 5%;
+  font-size: 30px;
+}
+
+#employee_list_btns {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+select {
+  border: 2px solid var(--black);
+}
+
+.employee_list_top_btns {
+  padding: 10px;
+  height: 40px;
+  margin: 10px 0;
+}
+
+#add_btn {
+  border: none;
+  background-color: var(--chocolate);
+  border-radius: 5px;
+  font-weight: bold;
+  color: var(--wheat);
+}
+
+#filter_btn {
+  border-color: var(--chocolate);
+  color: var(--chocolate);
+  border-radius: 5px;
+  font-weight: bold;
+  margin-right: 20px;
+  background-color: white;
+}
+
+#table_border {
+  width: 100%;
+  margin: 0 auto;
+}
+
+table,
+td {
+  margin: 0 auto;
+  text-align: center;
+  padding: 8px 0;
+
+}
+
+th {
+  background-color: var(--darkOrange);
+  margin: 0 auto;
+  text-align: center;
+}
+
+tbody tr:nth-child(even) {
+  background: var(--lightOrange);
+}
+
+tbody tr:nth-child(odd) {
+  background: var(--white);
+}
+
+table {
+  width: 100%;
+}
+
+#main {
+  background-color: var(--cream);
+  height: calc(100vh - 185px);
+  width: 100%;
+  overflow: auto;
+}
+
+.table_col {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.table_col h3 {
+  margin: 0;
+  font-weight: 400;
+  padding-left: 10px;
+  font-size: 16px;
+}
+
+#skills_col,
+#actions_col {
+  padding: 3px 0 3px 10px;
+  font-weight: 400;
+}
+
+#sort_icon {
+  font-size: 20px;
+  padding: 4px;
+}
+
+#edit_icon,
+#delete_icon {
+  width: 30px;
+}
+
+.edit_dlt_icon {
+  display: flex;
+  justify-content: space-around;
+}
+
+#delete_modal {
+  margin: 0px auto;
+  text-align: center;
+  width: 30%;
+  padding: 5px;
+  position: fixed;
+  display: none;
+  background-color: var(--white);
+  top: 33%;
+  left: 33%;
+  display: flex;
+  flex-wrap: wrap;
+  height: 35%;
+}
+
+#delete_modal p {
+  padding-top: 20px;
+  text-align: center;
+}
+
+#delete_btns {
+  display: flex;
+  justify-content: center;
+  height: 21%;
+  padding-top: 11px;
+}
+
+#ok_delete {
+  width: 32%;
+  background-color: var(--chocolate);
+  color: var(--wheat);
+  font-weight: bold;
+  border: none;
+  border-radius: 7px;
+  margin-left: 35px;
+  cursor: pointer;
+}
+
+#cancel_delete {
+  width: 32%;
+  color: var(--chocolate);
+  font-weight: bold;
+  border: 2px solid var(--chocolate);
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.close_delete {
+  color: var(--chocolate);
+  font-size: 30px;
+  float: right;
+  cursor: pointer;
+}
+
+form {
+  margin: 37px auto;
+
+}
+
+.modal h1 {
+  text-align: left;
+  margin: 5% 0 5% 4%;
+  font-size: 30px;
+  color: var(--black);
+  font-weight: 400;
+}
+
+.modal {
+  margin: 0 auto;
+  min-height: 75vh;
+  max-height: 95vh;
+  overflow: auto;
+  background-color: var(--white);
+  width: 80%;
+  z-index: 1;
+  top: 56px;
+  right: 10%;
+  position: fixed;
+}
+
+.modal_content {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.emp_input_box {
+  width: 33%;
+  margin: 0 0 4% 0;
+  font-size: 20px;
+}
+
+label {
+  font-size: 16px;
+}
+
+#form_btns {
+  display: flex;
+  justify-content: space-between;
+  width: 210px;
+  float: right;
+  padding-right: 45px;
+}
+
+.form_btns_button {
+  width: 75px;
+  height: 35px;
+}
+
+#save {
+  color: wheat;
+  background-color: chocolate;
+  font-weight: bold;
+  border-style: none;
+  border-radius: 7px;
+  width: 95px;
+  cursor: pointer;
+}
+
+#cancel {
+  font-weight: bold;
+  border-style: none;
+  border-radius: 7px;
+  border: 1px solid chocolate;
+  color: chocolate;
+  width: 95px;
+  cursor: pointer;
+}
+
+#display_skills_tag {}
+
+.modal_heading {
+  padding: 15px 12px;
+  background-color: var(--chocolate);
+  color: var(--white);
+}
+
+#dynamic_heading {
+  margin: 0 auto;
+}
+
+.close {
+  color: var(--white);
+  float: right;
+  font-size: 50px;
+  font-weight: normal;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#add_skill {}
+
+.input_box {
+  padding: 0 6px;
+  width: 70%;
+  height: 3em;
+  border: none;
+  border-bottom: 2px solid var(--chocolate);
+  background-color: var(--white);
+}
+
+input:focus-visible {
+  outline: none;
+}
+
+select:focus-visible {
+  outline: none;
+}
+
+.input_box::placeholder {
+  font-size: 16px;
+}
+
+.emp_input_box label {
+  width: 70%;
+  text-align: left;
+  margin: 0 auto;
+  display: block;
+  float: left;
+  margin-left: 13%;
+}
+
+#overlay,
+#overlay_delete {
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: none;
+}
+
+/*................................................
+    7. FOOTER SECTION
+.................................................*/
+
+#copyright {
+  border-top: 2px solid var(--brown);
+  text-align: center;
+  padding: 15px 0 10px 0;
+  font-size: 12px;
+  width: 100%;
+  background-color: var(--chocolate);
+}
+
+footer {
+  bottom: 0;
+  height: 66px;
+}
