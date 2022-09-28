@@ -33,7 +33,7 @@
                         <option value="html">HTML</option>
                         <option value="" selected hidden>Apply Filter</option>
                     </select>
-                    <button class="employee_list_top_btns" onclick="open_modal()" id="add_btn"><i
+                    <button class="employee_list_top_btns" onclick="open_modal(true)" id="add_btn"><i
                             class="fa-solid fa-user-plus"></i> Add Employee</button>
                 </div>
                 <div id="table_border">
@@ -70,47 +70,6 @@
                         </thead>
 
                         <tbody id="tbody">
-                            <tr>
-                                <td>1</td>
-                                <td>akv</td>
-                                <td>js,c,cpp</td>
-                                <td>1</td>
-                                <td>
-                                    <i id="edit_icon" onclick="open_update_modal()" class="fa-solid fa-user-pen"></i>
-                                    <i id="delete_icon" onclick="open_dlt_modal()" class="fa-solid fa-user-slash"></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>akv</td>
-                                <td>js,c,cpp</td>
-                                <td>1</td>
-                                <td>
-                                    <i id="edit_icon" onclick="open_update_modal()" class="fa-solid fa-user-pen"></i>
-                                    <i id="delete_icon" onclick="open_dlt_modal()" class="fa-solid fa-user-slash"></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>akv</td>
-                                <td>js,c,cpp</td>
-                                <td>1</td>
-                                <td>
-                                    <i id="edit_icon" onclick="open_update_modal()" class="fa-solid fa-user-pen"></i>
-                                    <i id="delete_icon" onclick="open_dlt_modal()" class="fa-solid fa-user-slash"></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>akv</td>
-                                <td>js,c,cpp</td>
-                                <td>1</td>
-                                <td>
-                                    <i id="edit_icon" onclick="open_update_modal()" class="fa-solid fa-user-pen"></i>
-                                    <i id="delete_icon" onclick="open_dlt_modal()" class="fa-solid fa-user-slash"></i>
-                                </td>
-                            </tr>
-
                         </tbody>
                     </table>
 
@@ -120,8 +79,8 @@
                             <span class="close_delete" onclick="close_dlt_modal()">&times;</span>
                             <p>Are you sure you want you want to delete the employee?</p>
                             <div id="delete_btns">
-                                <button onclick="close_dlt_modal()" id="cancel_delete">Cancel</button>
-                                <button id="ok_delete">OK</button>
+                                <button onclick="close_dlt_modal()" id="cancel_delete">NO</button>
+                                <button id="ok_delete">YES</button>
                             </div>
                         </div>
 
