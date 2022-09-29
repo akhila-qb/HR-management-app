@@ -9,7 +9,7 @@
     },
     {
         "employee_id": 1003,
-        "name": "vinitha ",
+        "name": "Vinitha ",
         "experience": "7",
         "phone": 7542189788,
         "email": "vini06@gmail.com ",
@@ -18,7 +18,7 @@
     },
     {
         "employee_id": 1004,
-        "name": "nivin",
+        "name": "Nivin",
         "experience": "8",
         "phone": 7542186722,
         "email": "nivi06@gmail.com ",
@@ -27,7 +27,7 @@
     },
     {
         "employee_id": 1001,
-        "name": "smitha ",
+        "name": "Smitha ",
         "experience": "13",
         "phone": 2345769788,
         "email": "smitha06@gmail.com ",
@@ -36,7 +36,7 @@
     },
     {
         "employee_id": 1002,
-        "name": "kishore",
+        "name": "Kishore",
         "experience": "1",
         "phone": 2345769864,
         "email": "kishore06@gmail.com ",
@@ -44,7 +44,7 @@
     },
     {
         "employee_id": 1006,
-        "name": "karun",
+        "name": "Karun",
         "experience": "3",
         "phone": 2345767886,
         "email": "kaurn88@gmail.com ",
@@ -53,10 +53,10 @@
     },
     {
         "employee_id": 1005,
-        "name": "pravin",
+        "name": "Pravin",
         "experience": "0",
         "phone": 9712345788,
         "email": "pravi@gmail.com ",
-        "skills": []
+        "skills": [5]
     }
 ]
