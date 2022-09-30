@@ -42,20 +42,24 @@ function get_employee_details() {
     <td>${get_skill_details()}</td>
     <td>${employee.experience}</td>
     <td>
-    <i id="edit_icon" onclick="open_modal(false)" class="fa-solid fa-user-pen"></i>
+    <i id="edit_icon" onclick="open_modal(false,${employee.employee_id})" class="fa-solid fa-user-pen"></i>
     <i id="delete_icon" onclick="open_dlt_modal(this)" class="fa-solid fa-user-slash"></i>
     </td>`
         tbody.appendChild(tr)
     })
 }
 
+const skills=[]
+function checkbox_value (a){
+    skills.push(a)
+    console.log(skills);
+}
 //function to add new emp
 function save_new_emp_data() {
-    console.log("hi");
     const employee_id = document.getElementById("emp_id").value
     const name = document.getElementById("emp_name").value
     const experience = document.getElementById("emp_exp").value
-    const skills = document.getElementById("emp_skill").value.split(", ")
+  //  const skills = document.getElementById("emp_skill").value.split(", ")
 //let skills=trial()
 //console.log(temp_skills);
 
@@ -96,7 +100,7 @@ function remove_old_details() {
     document.querySelectorAll('.table_data').forEach(empRow => empRow.remove());
 }
 
-function open_modal(is_add) {
+function open_modal(is_add,row_id) {
     let modal = document.querySelector(".modal");
     modal.style.display = "block";
     let overlay = document.querySelector("#overlay");
@@ -121,6 +125,8 @@ function open_modal(is_add) {
         input_box.forEach(content =>{
             content.value=""
         })
+                
+
     }
 }
 
@@ -147,7 +153,18 @@ function close_dlt_modal() {
 
 
 
+var expanded = false;
 
+function showCheckboxes() {
+  var checkboxes = document.getElementById("checkboxes");
+  if (!expanded) {
+    checkboxes.style.display = "block";
+    expanded = true;
+  } else {
+    checkboxes.style.display = "none";
+    expanded = false;
+  }
+}
 
 
 

@@ -448,6 +448,49 @@ label {
   cursor: pointer;
 }
 
+              .multiselect {
+                width: 87%;
+                margin-left: 13%;
+              }
+
+              .selectBox {
+                position: relative;
+              }
+
+              .selectBox select {
+                width: 100%;
+                height: 3em;
+                border: none;
+                border-bottom: 2px solid var(--chocolate);
+                background-color: var(--white);
+                font-size: 15px;
+                color:gray;
+              }
+
+              .overSelect {
+                position: absolute;
+                inset: 0px;
+              } 
+
+              #checkboxes {
+                display: none;
+                position: absolute;
+                left: 0;
+                width: 33%;
+
+              }
+
+              #checkboxes label {
+                display: block;
+              }
+
+              #checkboxes label:hover {
+                background-color: var(--chocolate);
+              }
+              #checkboxes input{
+                margin-right: 15px;
+              }
+
 #display_skills_tag {}
 
 .modal_heading {
