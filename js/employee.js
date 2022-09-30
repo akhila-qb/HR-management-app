@@ -51,6 +51,7 @@ function get_employee_details() {
 
 //function to add new emp
 function save_new_emp_data() {
+    console.log("hi");
     const employee_id = document.getElementById("emp_id").value
     const name = document.getElementById("emp_name").value
     const experience = document.getElementById("emp_exp").value
@@ -95,16 +96,25 @@ function remove_old_details() {
     document.querySelectorAll('.table_data').forEach(empRow => empRow.remove());
 }
 
-function open_modal(is_add, id_num, emp_obj) {
+function open_modal(is_add) {
     let modal = document.querySelector(".modal");
     modal.style.display = "block";
     let overlay = document.querySelector("#overlay");
     overlay.style.display = "block";
     if (is_add) {
+  
         let update_heading = document.querySelector("#dynamic_heading")
         update_heading.textContent = "Add Employee";
+        let save=document.getElementById("save")
+        save.onclick=()=>{save_new_emp_data()}
+
+        let input_box = document.querySelectorAll(".input_box")
+        input_box.forEach(content =>{
+            content.value=""
+        })
     }
     else {
+
         let update_heading = document.querySelector("#dynamic_heading")
         update_heading.textContent = "Update Employee";
         let input_box = document.querySelectorAll(".input_box")
