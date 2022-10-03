@@ -26,11 +26,11 @@
            <div class="container">
                <div id="employee_list_btns">
                    <select class="employee_list_top_btns" id="filter_btn">
-                       <option value="java">Java</option>
-                       <option value="c">C</option>
-                       <option value="cpp">CPP</option>
-                       <option value="python">Python</option>
-                       <option value="html">HTML</option>
+                       <option value="Java">Java</option>
+                       <option value="C">C</option>
+                       <option value="CPP">CPP</option>
+                       <option value="Python">Python</option>
+                       <option value="HTML">HTML</option>
                        <option value="" selected hidden>Apply Filter</option>
                    </select>
                    <button class="employee_list_top_btns" onclick="open_modal(true)" id="add_btn"><i
@@ -112,7 +112,7 @@
                                    </div>
                                 <div class="emp_input_box">
                                     <label for="emp_skill">Skills</label>
-                                
+                               
                                     <!-- <select class="input_box" id="emp_skill">
                                         <option value="1">Java</option>
                                         <option value="2">C</option>
@@ -121,31 +121,32 @@
                                         <option value="5">HTML</option>
                                         <option value="" selected hidden>Select Skills</option>
                                     </select> -->
-                                    
-                                    <form>
-                                        <div class="multiselect">
-                                          <div class="selectBox" onclick="showCheckboxes()">
-                                            <select id="emp_skill">
-                                              <option value="" selected hidden>Select Skills</option>
-                                            </select>
+                                <form>
+                                    <div class="multiselect">
+                                        <div class="selectBox" onclick="showCheckboxes()">
+                                            <!-- <select id="emp_skill">
+                                                                              <option value="" selected hidden>Select Skills</option>
+                                                                            </select> -->
+                                            <textarea class="input_box" id="text_area" placeholder="Select skills"></textarea>
+                                
                                             <div class="overSelect"></div>
-                                          </div>
-                                          <div id="checkboxes">
-                                            <label for="one">
-                                              <input type="checkbox" id="one" onclick="checkbox_value(1)" />Java</label>
-                                            <label for="two">
-                                              <input type="checkbox" id="two" onclick="checkbox_value(2)"/>C</label>
-                                            <label for="three">
-                                              <input type="checkbox" id="three" onclick="checkbox_value(3)"/>CPP</label>
-                                              <label for="four">
-                                                <input type="checkbox" id="four" onclick="checkbox_value(4)"/>Python</label>
-                                                <label for="five">
-                                                    <input type="checkbox" id="five" onclick="checkbox_value(5)"/>HTML</label>
-                                          </div>
                                         </div>
-                                      </form>
-
-
+                                        <div id="checkboxes" onclick="display_textbox()">
+                                            <!-- <label for="Java">
+                                                <input type="checkbox" id="Java" class="check_box" />Java</label>
+                                            <label for="C">
+                                                <input type="checkbox" id="C" class="check_box" />C</label>
+                                            <label for="CPP">
+                                                <input type="checkbox" id="CPP" class="check_box" />CPP</label>
+                                            <label for="Python">
+                                                <input type="checkbox" id="Python" class="check_box" />Python</label>
+                                            <label for="HTML">
+                                                <input type="checkbox" id="HTML" class="check_box" />HTML</label> -->
+                                        </div>
+                                    </div>
+                                </form>
+ 
+ 
                                        <div id="display_skills_tag">
                                        </div>
                                    </div>
@@ -184,8 +185,5 @@
 </body>
  
 </html>
- 
- 
- 
  
 
