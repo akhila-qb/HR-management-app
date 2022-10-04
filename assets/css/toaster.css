@@ -1,4 +1,4 @@
-
+/* The snackbar - position it at the bottom and in the middle of the screen */
 /* Animations to fade the snackbar in and out */
 @-webkit-keyframes fadein {
     from {bottom: 0; opacity: 0;}
