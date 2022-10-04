@@ -41,7 +41,7 @@ function get_employee_details() {
     <td>${employee.experience}</td>
     <td>
     <i id="edit_icon" onclick="open_modal(false,${employee.employee_id})" class="fa-solid fa-user-pen"></i>
-    <i id="delete_icon" onclick="open_dlt_modal(this)" class="fa-solid fa-user-slash"></i>
+    <i id="delete_icon" onclick="open_dlt_modal(${employee.employee_id})" class="fa-solid fa-user-slash"></i>
     </td>`
         tbody.appendChild(tr)
     })
@@ -113,7 +113,6 @@ else{
             return employee
         }
     })
-   // content.employee_id.readOnly=true
     content.name=name
     content.experience=experience
     content.skills=skills
@@ -174,7 +173,6 @@ function open_modal(is_add,row_id) {
                 check_box.forEach(checkbox=>{
                     for(let skill_name of emp_skill_list){
                     if(skill_name==checkbox.id){
-                        console.warn(checkbox.id);
                     checkbox.checked=true
                     }
                 }
@@ -198,11 +196,13 @@ function close_modal() {
     modal.style.display = "none";
 }
  
-function open_dlt_modal(target_dlt_icon) {
+function open_dlt_modal(row_id) {
     let dlt_modal = document.querySelector("#delete_modal");
     let overlay_dlt = document.querySelector("#overlay_delete");
     overlay_dlt.style.display = "block";
     dlt_modal.style.display = "block";
+    let ok_delete=document.getElementById("ok_delete")
+    ok_delete.onclick=()=>{delete_employee(row_id)}
 }
 function close_dlt_modal() {
     let dlt_modal = document.querySelector("#delete_modal");
@@ -267,11 +267,15 @@ function display_snackbar(purpose) {
     // Get the snackbar DIV
     if(purpose=="add"){
     var snackbar = document.getElementById("snackbar");
-    snackbar.innerHTML="Saved details.."
+    snackbar.textContent="Saved details.."
     }
     if(purpose=="update"){
     var snackbar = document.getElementById("snackbar"); 
-    snackbar.innerHTML="Updated details.."
+    snackbar.textContent="Updated details.."
+}
+if(purpose=="delete"){
+    var snackbar = document.getElementById("snackbar"); 
+    snackbar.textContent="Deleted employee"
 }
 
     // Add the "show" class to DIV
@@ -280,3 +284,20 @@ function display_snackbar(purpose) {
     // After 3 seconds, remove the show class from DIV
     setTimeout(function(){ snackbar.className = snackbar.className.replace("show", ""); }, 3000);
   }
+
+
+function delete_employee(row_id){
+    let x=JSON.parse(localStorage.getItem("employee_details"))
+    x.forEach(employee => {
+        if(employee.employee_id==row_id){
+       x=x.filter(employee=>employee.employee_id!=row_id)
+close_dlt_modal()
+       }
+    })
+localStorage.setItem("employee_details", JSON.stringify(x))
+remove_old_details()
+get_employee_details()
+display_snackbar("delete")
+}
+
+
