@@ -103,6 +103,7 @@ function save_emp_data(is_add) {
     remove_old_details()
     get_employee_details()
     close_modal()
+    display_snackbar("add")
 }
 else{
     let employee_details=JSON.parse(localStorage.getItem("employee_details"))
@@ -121,8 +122,8 @@ else{
     localStorage.setItem("employee_details", JSON.stringify(employee_details))
     remove_old_details()
     get_employee_details()
-    
     close_modal()
+    display_snackbar("update")
 }
 }
  
@@ -169,12 +170,9 @@ function open_modal(is_add,row_id) {
                 employee_skills.value=default_skill_lister(employee.skills)   
                 let emp_skill_list=employee_skills.value
                 emp_skill_list=emp_skill_list.split(",")
-                console.log(emp_skill_list);
                 let check_box=document.querySelectorAll(".check_box")
                 check_box.forEach(checkbox=>{
                     for(let skill_name of emp_skill_list){
-                        console.log(skill_name);
-                    
                     if(skill_name==checkbox.id){
                         console.warn(checkbox.id);
                     checkbox.checked=true
@@ -264,3 +262,21 @@ function default_skill_lister(selected_employee_skills) {
         }
     })
 }
+
+function display_snackbar(purpose) {
+    // Get the snackbar DIV
+    if(purpose=="add"){
+    var snackbar = document.getElementById("snackbar");
+    snackbar.innerHTML="Saved details.."
+    }
+    if(purpose=="update"){
+    var snackbar = document.getElementById("snackbar"); 
+    snackbar.innerHTML="Updated details.."
+}
+
+    // Add the "show" class to DIV
+    snackbar.className = "show";
+  
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ snackbar.className = snackbar.className.replace("show", ""); }, 3000);
+  }
