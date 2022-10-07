@@ -1,348 +1,263 @@
 //setting global variable
-let list
-//to display details in table
-fetch_store_content("../assets/json/employee_list.json", "employee_details")
-
-get_employee_details()
-
-function get_employee_details() {
-    tbody = document.getElementById("tbody")
-    JSON.parse(localStorage.getItem("employee_details")).forEach(employee => {
-        fetch_store_content("../assets/json/skills.json", "skill_details")
-        //   get_skill_details()
-        function get_skill_details() {
-            const skill_details = JSON.parse(localStorage.getItem("skill_details"))
-            // const skill_name_array = employee.skills.map(element => {
-
-            //     for (let skill_obj of skill_details) {
-            //         if (skill_obj.skill_id == element) {
-            //             return skill_obj.skill
-            //         }
-            //     }
-            // })
-            // return skill_name_array
-            const skill_name_array = employee.skills.map(element => {
-
-                for (let skill_obj of skill_details) {
-                    if (skill_obj.skill_id == element) {
-                        return skill_obj.skill
-                    }
-                }
-            })
-            return skill_name_array
-
-        }
-
-        let tr = document.createElement("tr")
-        tr.setAttribute("class", "table_data")
-        tr.setAttribute("id", `${employee.employee_id}`)
-        tr.innerHTML = ` <td>${employee.employee_id}</td>
-    <td >${employee.name}</td>
-    <td>${get_skill_details()}</td>
-    <td>${employee.experience}</td>
-    <td>
-    <i id="edit_icon" onclick="open_modal(false,${employee.employee_id})" class="fa-solid fa-user-pen"></i>
-    <i id="delete_icon" onclick="open_dlt_modal(${employee.employee_id})" class="fa-solid fa-user-slash"></i>
-    </td>`
-    tbody.appendChild(tr)
-    })
+let list;
+let selectedSkills = []
+//calls fetch function to get JSON data
+fetchStoreContent("../assets/json/employee_list.json", "employeeDetails");
+getEmployeeDetails();
+//function to display details on table
+function getEmployeeDetails() {
+  tbody = document.getElementById("tbody");
+  JSON.parse(localStorage.getItem("employeeDetails")).forEach((employee) => {
+      fetchStoreContent("../assets/json/skills.json", "skillDetails");
+      function getSkillDetails() {
+          const skillDetails = getLocalstorageData("skillDetails");
+          let res = skillDetails.filter(skillObj => employee.skills.includes(skillObj.skillId)).map(item => item.skill)
+          return res
+      }
+      let tr = document.createElement("tr");
+      tr.setAttribute("class", "tableData");
+      tr.setAttribute("id", `${employee.employeeId}`);
+      tr.innerHTML = ` <td>${employee.employeeId}</td>
+  <td >${employee.name}</td>
+  <td>${getSkillDetails()}</td>
+  <td>${employee.experience}</td>
+  <td>
+  <i id="edit_icon" onclick="openModal(false,${employee.employeeId
+          })" class="fa-solid fa-user-pen"></i>
+  <i id="delete_icon" onclick="openDltModal(${employee.employeeId
+          })" class="fa-solid fa-user-slash"></i>
+  </td>`;
+      tbody.appendChild(tr);
+  });
+}
+//displays input and label tags of checkbox div and makes it checked using onchange,
+function displayCheckBoxes() {
+  let checkboxes = document.getElementById("checkboxes");
+  const skillDetails = getLocalstorageData("skillDetails");
+  let div = document.createElement("div");
+  skillDetails.forEach((skill) => {
+      let childDiv = document.createElement("div");
+      let label = document.createElement("label");
+      label.setAttribute("for", `${skill.skillId}`);
+      let input = document.createElement("input");
+      input.setAttribute("type", "checkbox");
+      input.setAttribute("class", "check_box");
+      input.setAttribute("id", `${skill.skillId}`);
+      input.onchange = (event) => {
+          if (input.checked)
+              selectedSkills.push(skill.skillId)
+          else {
+              selectedSkills = selectedSkills.filter(item => item != skill.skillId)
+          }
+          setSelectedSkills(selectedSkills)
+      }
+      label.innerHTML = `${skill.skill}`;
+      childDiv.appendChild(label);
+      childDiv.appendChild(input);
+      div.appendChild(childDiv);
+  });
+  checkboxes.replaceChildren(div);
+}
+//returns a new employee object by getting new details entered
+function getAddEmployeeDetails() {
+  const employeeId = document.getElementById("emp_id").value;
+  const name = document.getElementById("emp_name").value;
+  const experience = document.getElementById("emp_exp").value;
+  const phone = document.getElementById("emp_phone").value;
+  const email = document.getElementById("emp_mail").value;
+  skills = [];
+  skills = selectedSkills
+  return { employeeId, name, experience, skills, phone, email };
 }
 
-
-let skills=[]
-function display_checkboxes(){
-    let checkboxes = document.getElementById("checkboxes")
-    const skill_details = JSON.parse(localStorage.getItem("skill_details"))
-    let div = document.createElement("div")
-    skill_details.forEach(skill => {
-        let child_div = document.createElement("div")
-        let label = document.createElement("label")
-        label.setAttribute("for", `${skill.skill}`)
-        let input = document.createElement("input")
-        input.setAttribute("type", "checkbox")
-        input.setAttribute("class", "check_box")
-        input.setAttribute("id", `${skill.skill}`)
-      skills=[]
-                                      input.onchange=(event)=>{
-                                        if(input.checked)
-                                        skills.push(skill.skill_id)
-                                        else{
-                                            skills.pop(skill.skill_id)
-                                        }
-                                      }
-        label.innerHTML = `${skill.skill}`
-        child_div.appendChild(label)
-        child_div.appendChild(input)
-        div.appendChild(child_div)
-    })
-    checkboxes.replaceChildren(div)
+//function that checks if every fields are filled
+function formValidation(){
+    const nodeList=document.querySelectorAll(".input_box")
+    const formFields=Array.from(nodeList)
+  return res= formFields.every(field=>{
+      return field.checkValidity()
+    })   
 }
 
 //function to add new emp
-function save_emp_data(is_add) {
-    const employee_id = document.getElementById("emp_id").value
-    const name = document.getElementById("emp_name").value
-    const experience = document.getElementById("emp_exp").value
-
-    // let input=document.querySelectorAll(".check_box")
-   //  skills=[]
-    // console.log(input);
-    // input.onchange=()=>{
-    //     console.log(skill.skill);
-    //     skills.push(skill.skill)
-    //   }
-
-    // skills = []
-    // let checkbox_one = document.getElementById("Java")
-    // if (checkbox_one.checked) {
-    //     skills.push(1)
-    // }
-    // let checkbox_two = document.getElementById("C")
-    // if (checkbox_two.checked) {
-    //     skills.push(2)
-    // }
-    // let checkbox_three = document.getElementById("CPP")
-    // if (checkbox_three.checked) {
-    //     skills.push(3)
-    // }
-    // let checkbox_four = document.getElementById("Python")
-    // if (checkbox_four.checked) {
-    //     skills.push(4)
-    // }
-    // let checkbox_five = document.getElementById("HTML")
-    // if (checkbox_five.checked) {
-    //     skills.push(5)
-    // }
-    const phone = document.getElementById("emp_phone").value
-    const email = document.getElementById("emp_mail").value
-
-    const new_emp_obj = { employee_id, name, experience, skills, phone, email }
-   
-    console.log(new_emp_obj);
-    const employee_details = JSON.parse(localStorage.getItem("employee_details"))
-    if (is_add) {
-        employee_details.push(new_emp_obj)
-        localStorage.setItem("employee_details", JSON.stringify(employee_details))
-        remove_old_details()
-        get_employee_details()
-        close_modal()
-        display_snackbar("add")
-    }
-    else {
-        let employee_details = JSON.parse(localStorage.getItem("employee_details"))
-        //use same name as local storage
-       
-        let content = employee_details.find((employee) => {
-            if (employee.employee_id == employee_id) {
-                return employee
-            }
-        })
-
-        // let content = employee_details.find((employee) => {
-        //     (employee.employee_id == employee_id) 
-        // })
-        
-        //let content = employee.find(employee.employee_id == employee_id)
-            
-            
-    console.log(skills);
-        content.name = name
-        content.experience = experience
-        content.skills = skills
-        content.phone = phone
-        content.email = email
-        localStorage.setItem("employee_details", JSON.stringify(employee_details))
-        remove_old_details()
-        get_employee_details()
-        close_modal()
-        display_snackbar("update")  
-    }
+function saveEmpData(isAdd) {
+  let employeeDetails = getLocalstorageData("employeeDetails");
+   if (isAdd) {
+      const newEmpObj = getAddEmployeeDetails();
+      employeeDetails.push(newEmpObj);
+      setLocalstorageData(employeeDetails);
+      displaySnackbar("add");
+  } else {
+      const newEmpObj = getAddEmployeeDetails();
+      employeeDetails = employeeDetails.map(employee => {
+          if (employee.employeeId == newEmpObj.employeeId)
+              employee = { ...employee, ...newEmpObj }
+          return employee
+      })
+      setLocalstorageData(employeeDetails);
+      displaySnackbar("update");
+  }
+  selectedSkills = []
+  removeOldDetails();
+  getEmployeeDetails();
+  closeModal();
+  
 }
-
-function remove_old_details() {
-    document.querySelectorAll('.table_data').forEach(empRow => empRow.remove());
+//function to avoid repetition of details when submiting
+function removeOldDetails() {
+  document.querySelectorAll(".tableData").forEach((empRow) => empRow.remove());
 }
-
-function open_modal(is_add, row_id) {
-    let modal = document.querySelector(".modal");
-    modal.style.display = "block";
-    let overlay = document.querySelector("#overlay");
-    overlay.style.display = "block";
-    let check_box = document.querySelectorAll(".check_box")
-    display_checkboxes()
-    if (is_add) {
-        check_box.forEach(checkbox => {
-            checkbox.checked = false
-        })
-        dynamic_heading(true)
-        let save = document.getElementById("save")
-        save.onclick = () => { save_emp_data(true) }
-        let input_box = document.querySelectorAll(".input_box")
-        input_box.forEach(content => {
-            content.value = ""
-        })
-
-    }
-    else {
-        check_box.forEach(checkbox => {
-            checkbox.checked = false
-        })
-        dynamic_heading(false)
-        JSON.parse(localStorage.getItem("employee_details")).forEach(employee => {
-            if (employee.employee_id == row_id) {
-                const employee_id = document.getElementById("emp_id")
-                employee_id.value = employee.employee_id
-                const employee_name = document.getElementById("emp_name")
-                employee_name.value = employee.name
-                const employee_exp = document.getElementById("emp_exp")
-                employee_exp.value = employee.experience
-
-                const employee_skills = document.getElementById("text_area")
-                employee_skills.value = default_skill_lister(employee.skills)
-                let emp_skill_list = employee_skills.value
-                emp_skill_list = emp_skill_list.split(",")
-                let check_box = document.querySelectorAll(".check_box")
-                check_box.forEach(checkbox => {
-                    for (let skill_name of emp_skill_list) {
-                        if (skill_name == checkbox.id) {
-                            checkbox.checked = true
-                        }
-                    }
-                })
-
-                const employee_phone = document.getElementById("emp_phone")
-                employee_phone.value = employee.phone
-                const employee_mail = document.getElementById("emp_mail")
-                employee_mail.value = employee.email
-            }
-            let save = document.getElementById("save")
-            save.onclick = () => { save_emp_data(false) }
-        })
-    }
-}
-
-function dynamic_heading(is_add){
-let dynamic_heading= document.querySelector("#dynamic_heading")
-if(is_add)
-dynamic_heading.textContent="Add Employee"
-else
-dynamic_heading.textContent="Update Employee"
-}
-
-function close_modal() {
-    let modal = document.querySelector(".modal");
-    let overlay = document.querySelector("#overlay");
-    overlay.style.display = "none";
-    modal.style.display = "none";
-}
-
-function open_dlt_modal(row_id) {
-    let dlt_modal = document.querySelector("#delete_modal");
-    let overlay_dlt = document.querySelector("#overlay_delete");
-    overlay_dlt.style.display = "block";
-    dlt_modal.style.display = "block";
-    let ok_delete = document.getElementById("ok_delete")
-    ok_delete.onclick = () => { delete_employee(row_id) }
-}
-function close_dlt_modal() {
-    let dlt_modal = document.querySelector("#delete_modal");
-    let overlay_dlt = document.querySelector("#overlay_delete");
-    overlay_dlt.style.display = "none";
-    dlt_modal.style.display = "none";
-}
-
-
-
-var expanded = false;
-
-function showCheckboxes() {
-    var checkboxes = document.getElementById("checkboxes");
-    if (!expanded) {
-        checkboxes.style.display = "block";
-        expanded = true;
-    } else {
-        checkboxes.style.display = "none";
-        expanded = false;
-    }
-}
-
-
-function display_textbox() {
-    skill_list = []
-    let checkbox_one = document.getElementById("Java")
-    if (checkbox_one.checked) {
-        skill_list.push("Java")
-    }
-    let checkbox_two = document.getElementById("C")
-    if (checkbox_two.checked) {
-        skill_list.push("C")
-    }
-    let checkbox_three = document.getElementById("CPP")
-    if (checkbox_three.checked) {
-        skill_list.push("CPP")
-    }
-    let checkbox_four = document.getElementById("Python")
-    if (checkbox_four.checked) {
-        skill_list.push("Python")
-    }
-    let checkbox_five = document.getElementById("HTML")
-    if (checkbox_five.checked) {
-        skill_list.push("HTML")
-    }
-    let text_area = document.getElementById("text_area")
-    text_area.value = skill_list
-}
-
-// function display_textbox(value){
-//     skill_list=[]
-//     skill_list.push(value)
-// }
-
-function default_skill_lister(selected_employee_skills) {
-    let skill_details = JSON.parse(localStorage.getItem("skill_details"))
-    return selected_employee_skills.map((skill_number) => {
-        for (let obj of skill_details)
-            if (obj.skill_id == skill_number) {
-                return obj.skill
-            }
-    })
-}
-
-function display_snackbar(purpose) {
-    // Get the snackbar DIV
-    if (purpose == "add") {
-        var snackbar = document.getElementById("snackbar");
-        snackbar.textContent = "Employee added successfully"
-    }
-    if (purpose == "update") {
-        var snackbar = document.getElementById("snackbar");
-        snackbar.textContent = "Employee details updated successfully"
-    }
-    if (purpose == "delete") {
-        var snackbar = document.getElementById("snackbar");
-        snackbar.textContent = "Employee deleted successfully"
-    }
-
-    // Add the "show" class to DIV
-    snackbar.className = "show";
-
-    // After 3 seconds, remove the show class from DIV
-    setTimeout(function () { snackbar.className = snackbar.className.replace("show", ""); }, 3000);
-}
-
-
-function delete_employee(row_id) {
-    let x = JSON.parse(localStorage.getItem("employee_details"))
-    x.forEach(employee => {
-        if (employee.employee_id == row_id) {
-            x = x.filter(employee => employee.employee_id != row_id)
-            close_dlt_modal()
+/*function to display modal box for add and update employee
+@ param {string} checks if function is called for add employee
+@ param {string} passed row id of employee if function is called for update employee */
+function openModal(isAdd, rowId) {
+  let modal = document.querySelector(".modal");
+  modal.style.display = "block";
+  let overlay = document.querySelector("#overlay");
+  overlay.style.display = "block";
+  let checkBox = document.querySelectorAll(".check_box");
+  displayCheckBoxes();
+  let overSelect = document.getElementById("text_area");
+  if (isAdd) {
+      checkBox.forEach((checkbox) => {
+          checkbox.checked = false;
+      });
+      dynamicHeading(true);
+      let save = document.getElementById("save");
+      save.onclick = () => {
+        if(formValidation()){
+          saveEmpData(true);
         }
-    })
-    localStorage.setItem("employee_details", JSON.stringify(x))
-    remove_old_details()
-    get_employee_details()
-    display_snackbar("delete")
+      };
+      let input_box = document.querySelectorAll(".input_box");
+      input_box.forEach((content) => {
+          content.value = "";
+      });
+  } else {
+      checkBox.forEach((checkbox) => {
+          checkbox.checked = false;
+      });
+      dynamicHeading(false);
+      displayDefaultData(rowId);
+      let save = document.getElementById("save");
+      save.onclick = () => {
+        if(formValidation()){
+          saveEmpData(false);
+        }
+      };
+  }
 }
+//shows multiselect dropdown skills on click
+function showCheckBoxes(){
+  var checkboxes = document.getElementById("checkboxes");
+  checkboxes.style.display = "block";
+}
+// displays selected skills in text area by passing the skill names to text area values.
+function setSelectedSkills(value) {
+  const employeeSkills = document.getElementById("text_area");
+  employeeSkills.value = defaultSkilLister(value);
+}
+// displays full details of an employee
+function displayDefaultData(rowId) {
+  let employeeDetails = getLocalstorageData("employeeDetails");
+  employeeDetails.forEach((employee) => {
+      if (employee.employeeId == rowId) {
+          const employeeId = document.getElementById("emp_id");
+          employeeId.value = employee.employeeId;
+          const employeeName = document.getElementById("emp_name");
+          employeeName.value = employee.name;
+          const employeeExp = document.getElementById("emp_exp");
+          employeeExp.value = employee.experience;
+          setSelectedSkills(employee.skills)
+          selectedSkills = employee.skills
+          let checkBox = document.querySelectorAll(".check_box");
+          checkBox.forEach((checkbox) => {
+              for (let skillId of employee.skills) {
+                  if (skillId == checkbox.id) {
+                      checkbox.checked = true;
+                  }
+              }
+          });
+          const employeePhone = document.getElementById("emp_phone");
+          employeePhone.value = employee.phone;
+          const employeeMail = document.getElementById("emp_mail");
+          employeeMail.value = employee.email;
+      }
+  });
+}
+//changes heading of modal box for add and update functions.
+function dynamicHeading(isAdd) {
+  let dynamicHeading = document.querySelector("#dynamic_heading");
+  if (isAdd) dynamicHeading.textContent = "Add Employee";
+  else dynamicHeading.textContent = "Update Employee";
+}
+//closes modal box for add and update feature
+function closeModal() {
+  let modal = document.querySelector(".modal");
+  let overlay = document.querySelector("#overlay");
+  overlay.style.display = "none";
+  modal.style.display = "none";
+  checkboxes.style.display = "none";
+}
+//opens delete confirmation box
+function openDltModal(rowId) {
+  let dltModal = document.querySelector("#delete_modal");
+  let overlayDlt = document.querySelector("#overlay_delete");
+  overlayDlt.style.display = "block";
+  dltModal.style.display = "block";
+  let ok_delete = document.getElementById("ok_delete");
+  ok_delete.onclick = () => {
+      deleteEmployee(rowId);
+  };
+}
+//closes delete confirmation box.
+function closeDltModal() {
+  let dltModal = document.querySelector("#delete_modal");
+  let overlayDlt = document.querySelector("#overlay_delete");
+  overlayDlt.style.display = "none";
+  dltModal.style.display = "none";
+}
+/*shows the corresponding skill name from a given skill id array
+@ param {string} array of skill id */
+function defaultSkilLister(selectedEmployeeSkills) {
+  let skillDetails = getLocalstorageData("skillDetails");
+  const res = skillDetails.filter(obj => selectedEmployeeSkills.includes(obj.skillId)).map(item => item.skill);
+  return res;
+}
+//changes snackbar message for various functions.
+function displaySnackbar(purpose) {
+  // Get the snackbar DIV
+  if (purpose == "add") {
+      var snackbar = document.getElementById("snackbar");
+      snackbar.textContent = "Employee added successfully";
+  }
+  if (purpose == "update") {
+      var snackbar = document.getElementById("snackbar");
+      snackbar.textContent = "Employee details updated successfully";
+  }
+  if (purpose == "delete") {
+      var snackbar = document.getElementById("snackbar");
+      snackbar.textContent = "Employee deleted successfully";
+  }
+  // Add the "show" class to DIV
+  snackbar.className = "show";
+  // After 3 seconds, remove the show class from DIV
+  setTimeout(function () {
+      snackbar.className = snackbar.className.replace("show", "");
+  }, 3000);
+}
+
+//deletes particular employee details from a row an from localstorage.
+function deleteEmployee(rowId) {
+  let x = getLocalstorageData("employeeDetails");
+  let y = x.filter((employee) => employee.employeeId != rowId);
+  closeDltModal();
+  setLocalstorageData(y);
+  removeOldDetails();
+  getEmployeeDetails();
+  displaySnackbar("delete");
+}
+
+
 
 

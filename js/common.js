@@ -1,6 +1,25 @@
-//function to fetch and store data
-function fetch_store_content(url, variable_to_store_json) {
+/*function to fetch and store data
+@ param {string} url of json file
+@ param {string} variable to store json*/
+function fetchStoreContent(url, variableToStoreJson) {
     fetch(url)
-        .then(response => response.json())
-        .then(list => localStorage.setItem(variable_to_store_json, JSON.stringify(list)))
-}
+      .then((response) => response.json())
+      .then((list) =>
+        localStorage.setItem(variableToStoreJson, JSON.stringify(list))
+      );
+   }
+   
+   /*function to get local storage data
+   @ param {string} variable to store data*/
+   function getLocalstorageData(storageVariable) {
+    return JSON.parse(localStorage.getItem(storageVariable));
+   }
+   
+   /*function to set local storage data
+   @ param {string} variable to store data*/
+   function setLocalstorageData(storageVariable) {
+    return localStorage.setItem(
+      "employeeDetails",
+      JSON.stringify(storageVariable)
+    );
+   }

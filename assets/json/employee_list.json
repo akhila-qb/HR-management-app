@@ -1,6 +1,6 @@
 [
     {
-        "employee_id": 1007,
+        "employeeId": 1007,
         "name": "Sachin",
         "experience": 5,
         "phone": 976539843,
@@ -8,7 +8,7 @@
         "skills": [ 1,2, 3 ]
     },
     {
-        "employee_id": 1003,
+        "employeeId": 1003,
         "name": "Vinitha ",
         "experience": "7",
         "phone": 7542189788,
@@ -17,7 +17,7 @@
         ]
     },
     {
-        "employee_id": 1004,
+        "employeeId": 1004,
         "name": "Nivin",
         "experience": "8",
         "phone": 7542186722,
@@ -26,7 +26,7 @@
         ]
     },
     {
-        "employee_id": 1001,
+        "employeeId": 1001,
         "name": "Smitha ",
         "experience": "13",
         "phone": 2345769788,
@@ -35,7 +35,7 @@
         ]
     },
     {
-        "employee_id": 1002,
+        "employeeId": 1002,
         "name": "Kishore",
         "experience": "1",
         "phone": 2345769864,
@@ -43,7 +43,7 @@
         "skills": [5]
     },
     {
-        "employee_id": 1006,
+        "employeeId": 1006,
         "name": "Karun",
         "experience": "3",
         "phone": 2345767886,
@@ -52,7 +52,7 @@
         ]
     },
     {
-        "employee_id": 1005,
+        "employeeId": 1005,
         "name": "Pravin",
         "experience": "0",
         "phone": 9712345788,
