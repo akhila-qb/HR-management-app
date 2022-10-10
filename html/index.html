@@ -8,9 +8,8 @@
     <title>HR-homepage</title>
     <link rel="icon" type="image/x-icon" href="../assets/images/logo.png">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/toaster.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v6.2.0/css/all.css">
-
-
 </head>
 
 <body>
@@ -26,21 +25,20 @@
             <div class="container">
                 <div id="employee_list_btns">
                     <select class="employee_list_top_btns" id="filter_btn">
-                        <option value="java">Java</option>
-                        <option value="c">C</option>
-                        <option value="cpp">CPP</option>
-                        <option value="python">Python</option>
-                        <option value="html">HTML</option>
+                        <option value="Java">Java</option>
+                        <option value="C">C</option>
+                        <option value="CPP">CPP</option>
+                        <option value="Python">Python</option>
+                        <option value="HTML">HTML</option>
                         <option value="" selected hidden>Apply Filter</option>
                     </select>
-                    <button class="employee_list_top_btns" onclick="open_modal()" id="add_btn"><i
+                    <button class="employee_list_top_btns" onclick="openModal(true)" id="add_btn"><i
                             class="fa-solid fa-user-plus"></i> Add Employee</button>
                 </div>
                 <div id="table_border">
                     <table id="table">
                         <thead id="thead">
                             <tr>
-
                                 <th>
                                     <div id="id_col" class="table_col">
                                         <h3>Employee ID</h3>
@@ -53,7 +51,6 @@
                                         <i id="sort_icon" class="fa-solid fa-sort"></i>
                                     </div>
                                 </th>
-
                                 <th>
                                     <div id="skills_col" class="table_col">Skills</div>
                                 </th>
@@ -68,134 +65,88 @@
                                 </th>
                             </tr>
                         </thead>
-
                         <tbody id="tbody">
-                            <tr>
-                                <td>1</td>
-                                <td>akv</td>
-                                <td>js,c,cpp</td>
-                                <td>1</td>
-                                <td>
-                                    <i id="edit_icon" onclick="open_update_modal()" class="fa-solid fa-user-pen"></i>
-                                    <i id="delete_icon" onclick="open_dlt_modal()" class="fa-solid fa-user-slash"></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>akv</td>
-                                <td>js,c,cpp</td>
-                                <td>1</td>
-                                <td>
-                                    <i id="edit_icon" onclick="open_update_modal()" class="fa-solid fa-user-pen"></i>
-                                    <i id="delete_icon" onclick="open_dlt_modal()" class="fa-solid fa-user-slash"></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>akv</td>
-                                <td>js,c,cpp</td>
-                                <td>1</td>
-                                <td>
-                                    <i id="edit_icon" onclick="open_update_modal()" class="fa-solid fa-user-pen"></i>
-                                    <i id="delete_icon" onclick="open_dlt_modal()" class="fa-solid fa-user-slash"></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>akv</td>
-                                <td>js,c,cpp</td>
-                                <td>1</td>
-                                <td>
-                                    <i id="edit_icon" onclick="open_update_modal()" class="fa-solid fa-user-pen"></i>
-                                    <i id="delete_icon" onclick="open_dlt_modal()" class="fa-solid fa-user-slash"></i>
-                                </td>
-                            </tr>
-
                         </tbody>
                     </table>
-
                     <!-- delete confirm box -->
                     <div id="overlay_delete">
                         <div id="delete_modal">
-                            <span class="close_delete" onclick="close_dlt_modal()">&times;</span>
+                            <span class="close_delete" onclick="closeDltModal()">&times;</span>
                             <p>Are you sure you want you want to delete the employee?</p>
                             <div id="delete_btns">
-                                <button onclick="close_dlt_modal()" id="cancel_delete">Cancel</button>
-                                <button id="ok_delete">OK</button>
+                                <button onclick="closeDltModal()" id="cancel_delete">NO</button>
+                                <button id="ok_delete">YES</button>
                             </div>
                         </div>
-
                     </div>
                     <!-- edit dialog box -->
                     <div id="overlay">
                         <div id="main_modal" class="modal">
                             <div class="modal_heading">
-                                <span class="close" onclick="close_modal()">&times;</span>
+                                <span class="close" onclick="closeModal()">&times;</span>
                                 <h3 id="dynamic_heading">Add Employee</h3>
                             </div>
-                            <form>
+                            <form name="modalForm" id="add_update_form">
                                 <div class="modal_content">
-
                                     <div class="emp_input_box">
-                                        <label for="emp_id">Employee ID</label>
+                                        <label for="emp_id">Employee ID </label>
                                         <input required placeholder="Enter employee ID" type="text" id="emp_id"
-                                            class="input_box" name="emp_id"><br><br>
+                                            class="input_box" name="emp_id"><br>
                                     </div>
                                     <div class="emp_input_box">
-                                        <label for="emp_name">Name</label>
+                                        <label for="emp_name">Name </label>
                                         <input required placeholder="Enter name" type="text" id="emp_name"
-                                            class="input_box" name="emp_name"><br><br>
+                                            class="input_box" name="emp_name"><br>                                
                                     </div>
                                     <div class="emp_input_box">
                                         <label for="emp_exp">Experience</label>
                                         <input required placeholder="Years of experience" type="number" id="emp_exp"
-                                            class="input_box" name="emp_exp"><br><br>
+                                            class="input_box" name="emp_exp"><br>
                                     </div>
                                     <div class="emp_input_box">
-                                        <label for="emp_skills">Skills</label>
-                                        <select class="input_box" id="add_skill">
-                                            <option value="java">Java</option>
-                                            <option value="c">C</option>
-                                            <option value="cpp">CPP</option>
-                                            <option value="python">Python</option>
-                                            <option value="html">HTML</option>
-                                            <option value="" selected hidden>Select Skills</option>
-                                        </select>
-
-                                        <div id="display_skills_tag">
-
+                                        <label for="emp_skill">Skills</label>
+                                        <div class="multiselect">
+                                            <div class="selectBox" onclick="showCheckBoxes()">
+                                                <textarea required class="input_box" id="text_area"
+                                                    placeholder="Select skills"></textarea>
+                                                <div class="overSelect"></div><br>
+                                            </div>
+                                            <div id="checkboxes">
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="emp_input_box">
                                         <label for="emp_phone">Phone</label>
                                         <input required maxlength="10" pattern="[6-9]{1}[0-9]{9}"
                                             placeholder="Enter phone number" type="tel" id="emp_phone" class="input_box"
-                                            name="emp_phone"><br><br>
+                                            name="emp_phone"><br>
                                     </div>
                                     <div class="emp_input_box">
                                         <label for="emp_mail">Email</label>
                                         <input required placeholder="Enter email" type="email" id="emp_mail"
-                                            class="input_box" name="emp_mail"><br><br>
+                                            class="input_box" name="emp_mail"><br>
                                     </div>
                                 </div>
                                 <div id="form_btns">
-                                    <button type="reset" class="form_btns_button" id="cancel" onclick="close_modal()"
+                                    <button type="reset" class="form_btns_button" id="cancel" onclick="closeModal()"
                                         value="CANCEL">CANCEL</button>
-                                    <button type="submit" class="form_btns_button" id="save" value="SAVE">SAVE</button>
+                                    <button type="button" class="form_btns_button" id="save" value="SAVE">SAVE</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- The actual snackbar -->
+            <div id="snackbar">Saved details..</div>
         </main>
         <!--Main ends-->
-
         <!--Footer starts-->
         <footer id="copyright">
             <p>Copyright @ 2020 HRM.CO, All Rights Reserved</p>
         </footer>
     </div>
+    <script src="../js/common.js"></script>
     <script src="../js/employee.js"></script>
     <!--Footer ends-->
 </body>

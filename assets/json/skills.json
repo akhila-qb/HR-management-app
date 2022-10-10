@@ -1,22 +1,22 @@
 [
     {
-        "skill_id": 1,
+        "skillId": 1,
         "skill": "Java"
     },
     {
-        "skill_id": 2,
+        "skillId": 2,
         "skill": "C"
     },
     {
-        "skill_id": 3,
+        "skillId": 3,
         "skill": "CPP"
     },
     {
-        "skill_id": 4,
+        "skillId": 4,
         "skill": "Python"
     },
     {
-        "skill_id": 5,
+        "skillId": 5,
         "skill": "HTML"
     }
 ]

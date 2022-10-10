@@ -37,6 +37,7 @@ body {
   --cream: #e7e9da;
   --wheat: #f5deb3;
   --white: #fff;
+  --shadow:#888
 }
 
 /*................................................
@@ -302,7 +303,7 @@ table {
 
 #sort_icon {
   font-size: 20px;
-  padding: 4px;
+  padding: 6px 0 0 9px;
 }
 
 #edit_icon,
@@ -331,6 +332,9 @@ table {
 }
 
 #delete_modal p {
+  padding-top: 5px;
+}
+.modal p {
   padding-top: 20px;
   text-align: center;
 }
@@ -445,6 +449,63 @@ label {
   cursor: pointer;
 }
 
+.multiselect {
+  width: 87%;
+  margin-left: 13%;
+}
+
+.selectBox {
+  position: relative;
+}
+
+/* .selectBox select {
+  width: 100%;
+  height: 3em;
+  border: none;
+  border-bottom: 2px solid var(--chocolate);
+  background-color: var(--white);
+  font-size: 15px;
+  color:gray;
+} */
+
+#text_area {
+  width: 100%;
+  height: 2.4em;
+  /* border: none;
+  border-bottom: 2px solid var(--chocolate);
+  background-color: var(--white); */
+  font-size: 15px;
+  color: gray;
+  margin: 4px;
+}
+
+.overSelect {
+  position: absolute;
+  inset: 0px;
+} 
+
+#checkboxes {
+  display: none;
+  position: absolute;
+  left: 0;
+  width: 33%;
+  margin-left: 30px;
+  height: 25%;
+  overflow: auto;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: var(--chocolate);
+}
+/* #checkboxes input{
+  margin-right: 15px;
+} */
+
 #display_skills_tag {}
 
 .modal_heading {
@@ -471,8 +532,6 @@ label {
   cursor: pointer;
 }
 
-#add_skill {}
-
 .input_box {
   padding: 0 6px;
   width: 70%;
@@ -489,7 +548,12 @@ input:focus-visible {
 select:focus-visible {
   outline: none;
 }
-
+.input_box:valid {
+  border-bottom: 2px solid var(--chocolate);
+}
+.input_box:invalid {
+  border-bottom: 2px solid red;
+}
 .input_box::placeholder {
   font-size: 16px;
 }
@@ -513,6 +577,30 @@ select:focus-visible {
   left: 0;
   top: 0;
   display: none;
+}
+
+#snackbar{
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 150px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: #333; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
+  bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show{
+  visibility: visible; /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
 /*................................................
