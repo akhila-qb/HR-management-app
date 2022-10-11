@@ -41,15 +41,17 @@
                                 <th>
                                     <div id="id_col" class="table_col">
                                         <h3>Employee ID</h3>
-                                        <i onclick="sortNumber(this)" data-sort-order-id="1" id="sort_icon"
-                                            class="fa-solid fa-sort"></i>
+                                        <i onclick="sortId(this,'employeeId')" id="sort_up"
+                                         class="fa-solid fa-sort-up"></i>
+                                         <i class="fa-solid fa-sort-down" onclick="sortId(this,'employeeiId')" id="sort_down" ></i>
                                     </div>
                                 </th>
                                 <th>
                                     <div id="name_col" class="table_col">
                                         <h3>Name</h3>
-                                        <i onclick="sortName(this)" data-sort-order-name="1" id="sort_icon"
-                                            class="fa-solid fa-sort"></i>
+                                        <i onclick="sortName(this)" id="sort_up_name"
+                                         class="fa-solid fa-sort-up"></i>
+                                         <i class="fa-solid fa-sort-down" onclick="sortName(this,'name')" id="sort_down_name" ></i>
                                     </div>
                                 </th>
                                 <th>
@@ -58,8 +60,9 @@
                                 <th>
                                     <div id="exp_col" class="table_col">
                                         <h3>Experience</h3>
-                                        <i onclick="sortNumber(this)" data-sort-order-exp="1" id="sort_icon"
-                                            class="fa-solid fa-sort"></i>
+                                        <i onclick="sortExp(this)" id="sort_up_exp"
+                                         class="fa-solid fa-sort-up"></i>
+                                         <i class="fa-solid fa-sort-down" onclick="sortExp(this,'experience')" id="sort_down_exp" ></i>
                                     </div>
                                 </th>
                                 <th>
@@ -109,9 +112,9 @@
                                         <label for="emp_skill">Skills</label>
                                         <div class="multiselect">
                                             <div class="selectBox" onclick="showCheckBoxes()">
-                                                <textarea required class="input_box" id="text_area"
-                                                    placeholder="Select skills"></textarea>
-                                                <div class="overSelect"></div><br>
+                                                <input required class="input_box" id="text_area"
+                                                    placeholder="Select skills">
+                                                <!-- <div class="overSelect"></div><br> -->
                                             </div>
                                             <div id="checkboxes">
                                             </div>

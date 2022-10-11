@@ -310,33 +310,58 @@ function deleteEmployee(rowId) {
   getEmployeeDetails();
   displaySnackbar("delete");
 }
-//function to sort employee id and experience in ascending and descending order.
-function sortNumber(event) {
-  const employeeDetails = getLocalstorageData("employeeDetails");
-  if (event.dataset.sortOrderId == 1) {
-    employeeDetails.sort((a, b) => a.employeeId - b.employeeId);
-    event.dataset.sortOrderId = 0;
-  } else if (event.dataset.sortOrderId == 0) {
-    employeeDetails.sort((a, b) => b.employeeId - a.employeeId);
-    event.dataset.sortOrderId = 1;
-  } else if (event.dataset.sortOrderExp == 1) {
-    employeeDetails.sort((a, b) => a.experience - b.experience);
-    event.dataset.sortOrderExp = 0;
-  } else if (event.dataset.sortOrderExp == 0) {
-    employeeDetails.sort((a, b) => b.experience - a.experience);
-    event.dataset.sortOrderExp = 1;
+// function to display multiselect checkbox on click
+function showFilterCheckBoxes(event) {
+  let checkboxes = document.getElementById("filter_checkboxes");
+  if (checkboxes.classList.contains("hide_filter_checkboxes"))
+    checkboxes.classList.remove("hide_filter_checkboxes");
+  else
+    checkboxes.classList.add("hide_filter_checkboxes");
+}
+
+//function to sort employee ids
+function sortId(event,elementToSort) {
+  const employeeDetails = getLocalstorageData("employeeDetails")
+  sortDownExp = document.getElementById("sort_down_exp")
+sortUpExp = document.getElementById("sort_up_exp")
+  sortDownId = document.getElementById("sort_down")
+sortUpId = document.getElementById("sort_up")
+sortDownName = document.getElementById("sort_down_name")
+sortUpName = document.getElementById("sort_up_name")
+  if (event.id == "sort_up") {
+    employeeDetails.sort((a, b) => a.elementToSort - b.elementToSort);
+    sortDownId.classList.add("sort_opacity");
+    sortUpId.classList.remove("sort_opacity");
+  }
+  else if (event.id == "sort_down") {
+    employeeDetails.sort((a, b) => b.elementToSort - a.elementToSort);
+    sortDownId.classList.remove("sort_opacity");
+    sortUpId.classList.add("sort_opacity");
   }
   setLocalstorageData("employeeDetails", employeeDetails);
   removeOldDetails();
   getEmployeeDetails();
+  sortDownExp.classList.remove("sort_opacity")
+  sortUpExp.classList.remove("sort_opacity")
+  sortDownName.classList.remove("sort_opacity")
+  sortUpName.classList.remove("sort_opacity")
 }
+
 //function to sort names in ascending and descending order.
-function sortName(event) {
+function sortName(event,elementToSort) {
   const employeeDetails = getLocalstorageData("employeeDetails");
-  if (event.dataset.sortOrderName == 1) {
+  sortDownName = document.getElementById("sort_down_name")
+sortUpName = document.getElementById("sort_up_name")
+sortDownExp = document.getElementById("sort_down_exp")
+sortUpExp = document.getElementById("sort_up_exp")
+sortDownId = document.getElementById("sort_down")
+sortUpId = document.getElementById("sort_up")
+  if (event.id == "sort_up_name") {
     employeeDetails.sort((a, b) => {
-      const nameA = a.name.toUpperCase(); // ignore upper and lowercase
-      const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+      const nameA = a[elementToSort].toUpperCase(); // ignore upper and lowercase
+      const nameB = b[elementToSort].toUpperCase(); // ignore upper and lowercase
+      sortDownName.classList.add("sort_opacity");
+      sortUpName.classList.remove("sort_opacity");
       if (nameA < nameB) {
         return -1;
       }
@@ -346,10 +371,12 @@ function sortName(event) {
       return 0;
     });
     event.dataset.sortOrderName = 0;
-  } else if (event.dataset.sortOrderName == 0) {
+  } else if (event.id == "sort_down_name") {
     employeeDetails.sort((b, a) => {
-      const nameA = a.name.toUpperCase(); // ignore upper and lowercase
-      const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+      const nameA = a[elementToSort].toUpperCase(); // ignore upper and lowercase
+      const nameB = b[elementToSort].toUpperCase(); // ignore upper and lowercase
+      sortDownName.classList.remove("sort_opacity");
+      sortUpName.classList.add("sort_opacity");
       if (nameA < nameB) {
         return -1;
       }
@@ -363,13 +390,35 @@ function sortName(event) {
   setLocalstorageData("employeeDetails", employeeDetails);
   removeOldDetails();
   getEmployeeDetails();
+  sortDownId.classList.remove("sort_opacity")
+  sortUpId.classList.remove("sort_opacity")
+  sortDownExp.classList.remove("sort_opacity")
+  sortUpExp.classList.remove("sort_opacity")
 }
-
-// function to display multiselect checkbox on click
-function showFilterCheckBoxes(event) {
-  let checkboxes = document.getElementById("filter_checkboxes");
-  if (checkboxes.classList.contains("hide_filter_checkboxes"))
-    checkboxes.classList.remove("hide_filter_checkboxes");
-  else
-    checkboxes.classList.add("hide_filter_checkboxes");
+//function to sort experience years.
+function sortExp(event,elementToSort) {
+  const employeeDetails = getLocalstorageData("employeeDetails");
+  sortDownExp = document.getElementById("sort_down_exp")
+sortUpExp = document.getElementById("sort_up_exp")
+  sortDownId = document.getElementById("sort_down")
+sortUpId = document.getElementById("sort_up")
+sortDownName = document.getElementById("sort_down_name")
+sortUpName = document.getElementById("sort_up_name")
+  if (event.id == "sort_up_exp") {
+    employeeDetails.sort((a, b) => a[elementToSort]- b[elementToSort]);
+    sortDownExp.classList.add("sort_opacity");
+    sortUpExp.classList.remove("sort_opacity");
+  }
+  else if (event.id == "sort_down_exp") {
+    employeeDetails.sort((a, b) => b[elementToSort] - a[elementToSort]);
+    sortDownExp.classList.remove("sort_opacity");
+    sortUpExp.classList.add("sort_opacity");
+  }
+  setLocalstorageData("employeeDetails", employeeDetails);
+  removeOldDetails();
+  getEmployeeDetails();
+  sortDownId.classList.remove("sort_opacity")
+  sortUpId.classList.remove("sort_opacity")
+  sortDownName.classList.remove("sort_opacity")
+  sortUpName.classList.remove("sort_opacity")
 }

@@ -297,9 +297,19 @@ table {
   font-weight: 400;
 }
 
-#sort_icon {
-  font-size: 20px;
-  padding: 6px 0 0 9px;
+#sort_up, #sort_up_exp, #sort_up_name {
+  font-size: 18px;
+  padding: 0 0 0 9px;
+}
+
+#sort_down, #sort_down_exp, #sort_down_name {
+    position: relative;
+    top: 7px;
+    right: 12px;
+    font-size: 18px;
+}
+.sort_opacity{
+  opacity: 0.6;
 }
 
 #edit_icon,
@@ -446,7 +456,7 @@ label {
 }
 
 .multiselect {
-  width: 87%;
+  width: 70%;
   margin-left: 13%;
 }
 
