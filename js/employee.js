@@ -124,7 +124,8 @@ function formValidation() {
     return field.checkValidity();
   }));
 }
-//function to add new emp
+/*function to add new emp
+@ param {string}checks if function is for adding */
 function saveEmpData(isAdd) {
   let employeeDetails = getLocalstorageData("employeeDetails");
   if (isAdd) {
@@ -196,7 +197,8 @@ function showCheckBoxes() {
   let checkboxes = document.getElementById("checkboxes");
   checkboxes.style.display = "block";
 }
-// displays selected skills in text area by passing the skill names to text area values.
+/* displays selected skills in text area by passing the skill names to text area values.
+@param {string} provides array of skill ids*/
 function setSelectedSkills(value) {
   const employeeSkills = document.getElementById("text_area");
   employeeSkills.value = defaultSkillLister(value);

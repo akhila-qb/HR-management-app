@@ -450,9 +450,10 @@ label {
   margin-left: 13%;
 }
 
-.selectBox {
+/* .selectBox {
   position: relative;
-}
+  height: 55px;
+} */
 
 #text_area {
   width: 100%;
@@ -495,10 +496,6 @@ label {
   position: relative;
 }
 
-/* #child_div {
- display: flex;
- justify-content: space-between;
-} */
 #checkboxes label {
   display: block;
 }
@@ -507,9 +504,6 @@ label {
   background-color: var(--chocolate);
 }
 
-/* #checkboxes input{
- margin-right: 15px;
-} */
 #display_skills_tag {}
 
 .modal_heading {
@@ -557,6 +551,10 @@ select:focus-visible {
   border-bottom: 2px solid var(--chocolate);
 }
 
+textarea:focus-visible {
+  outline: none;
+}
+
 .input_box:invalid {
   border-bottom: 2px solid red;
 }
@@ -579,8 +577,6 @@ select:focus-visible {
   margin-left: 13%;
   width: 104px;
 }
-
-.emp_filter_box input {}
 
 #overlay,
 #overlay_delete {
