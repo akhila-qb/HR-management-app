@@ -3,8 +3,8 @@ let list;
 let selectedSkills = [];
 let filterArray = [];
 //calls fetch function to get JSON data
-fetchStoreContent("../assets/json/employee_list.json", "employeeDetails");
-fetchStoreContent("../assets/json/employee_list.json", "filteredLocalStorage");
+fetchStoreContent("assets/json/employee_list.json", "employeeDetails");
+fetchStoreContent("assets/json/employee_list.json", "filteredLocalStorage");
 getEmployeeDetails();
 //displayFilterCheckbox();
 displayCheckBoxes("filter_checkboxes")
