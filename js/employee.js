@@ -86,8 +86,11 @@ function displayCheckBoxes(elementToObtain) {
     else {
       input.setAttribute("id", `${skill.skillId}`);
     }
+    selectedSkills=[]
     input.onchange = (event) => {
-      if (input.checked) selectedSkills.push(skill.skillId);
+      if (input.checked){
+       selectedSkills.push(skill.skillId);
+      }
       else {
         selectedSkills = selectedSkills.filter((item) => item != skill.skillId);
       }
