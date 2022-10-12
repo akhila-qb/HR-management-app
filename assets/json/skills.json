@@ -1,0 +1,22 @@
+[
+    {
+        "skillId": 1,
+        "skill": "Java"
+    },
+    {
+        "skillId": 2,
+        "skill": "C"
+    },
+    {
+        "skillId": 3,
+        "skill": "CPP"
+    },
+    {
+        "skillId": 4,
+        "skill": "Python"
+    },
+    {
+        "skillId": 5,
+        "skill": "HTML"
+    }
+]

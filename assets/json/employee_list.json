@@ -1,0 +1,62 @@
+[
+    {
+        "employeeId": 1007,
+        "name": "Sachin",
+        "experience": 5,
+        "phone": 9765398431,
+        "email": "Sachin06@gmail.com ",
+        "skills": [ 1,2, 3 ]
+    },
+    {
+        "employeeId": 1003,
+        "name": "Vinitha ",
+        "experience": "7",
+        "phone": 7542189788,
+        "email": "vini06@gmail.com ",
+        "skills": [5,1
+        ]
+    },
+    {
+        "employeeId": 1004,
+        "name": "Nivin",
+        "experience": "8",
+        "phone": 7542186722,
+        "email": "nivi06@gmail.com ",
+        "skills": [5
+        ]
+    },
+    {
+        "employeeId": 1001,
+        "name": "Smitha ",
+        "experience": "13",
+        "phone": 9876543897,
+        "email": "smitha06@gmail.com ",
+        "skills": [5,1,2,3,4
+        ]
+    },
+    {
+        "employeeId": 1002,
+        "name": "Kishore",
+        "experience": "1",
+        "phone": 9870684380,
+        "email": "kishore06@gmail.com ",
+        "skills": [5]
+    },
+    {
+        "employeeId": 1006,
+        "name": "Karun",
+        "experience": "3",
+        "phone": 9715234678,
+        "email": "kaurn88@gmail.com ",
+        "skills": [5,1,4
+        ]
+    },
+    {
+        "employeeId": 1005,
+        "name": "Pravin",
+        "experience": "0",
+        "phone": 9712345788,
+        "email": "pravi@gmail.com ",
+        "skills": [5]
+    }
+]
