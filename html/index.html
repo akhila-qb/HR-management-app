@@ -43,13 +43,13 @@
                                         <h3>Employee ID</h3>
                                         <i onclick="sortId(this,'employeeId')" id="sort_up"
                                          class="fa-solid fa-sort-up"></i>
-                                         <i class="fa-solid fa-sort-down" onclick="sortId(this,'employeeiId')" id="sort_down" ></i>
+                                         <i class="fa-solid fa-sort-down" onclick="sortId(this,'employeeId')" id="sort_down" ></i>
                                     </div>
                                 </th>
                                 <th>
                                     <div id="name_col" class="table_col">
                                         <h3>Name</h3>
-                                        <i onclick="sortName(this)" id="sort_up_name"
+                                        <i onclick="sortName(this,'name')" id="sort_up_name"
                                          class="fa-solid fa-sort-up"></i>
                                          <i class="fa-solid fa-sort-down" onclick="sortName(this,'name')" id="sort_down_name" ></i>
                                     </div>
@@ -60,7 +60,7 @@
                                 <th>
                                     <div id="exp_col" class="table_col">
                                         <h3>Experience</h3>
-                                        <i onclick="sortExp(this)" id="sort_up_exp"
+                                        <i onclick="sortExp(this,'experience')" id="sort_up_exp"
                                          class="fa-solid fa-sort-up"></i>
                                          <i class="fa-solid fa-sort-down" onclick="sortExp(this,'experience')" id="sort_down_exp" ></i>
                                     </div>
@@ -111,12 +111,12 @@
                                     <div class="emp_input_box">
                                         <label for="emp_skill">Skills</label>
                                         <div class="multiselect">
-                                            <div class="selectBox" onclick="showCheckBoxes()">
+                                            <div class="selectBox" onclick="showCheckBoxes(this)">
                                                 <input required class="input_box" id="text_area"
                                                     placeholder="Select skills">
                                                 <!-- <div class="overSelect"></div><br> -->
                                             </div>
-                                            <div id="checkboxes">
+                                            <div id="checkboxes" class="hide_checkboxes">
                                             </div>
                                         </div>
                                     </div>

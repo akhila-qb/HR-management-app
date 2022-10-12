@@ -4,6 +4,7 @@ let selectedSkills = [];
 let filterArray = [];
 //calls fetch function to get JSON data
 fetchStoreContent("../assets/json/employee_list.json", "employeeDetails");
+fetchStoreContent("../assets/json/employee_list.json", "filteredLocalStorage");
 getEmployeeDetails();
 //displayFilterCheckbox();
 displayCheckBoxes("filter_checkboxes")
@@ -120,10 +121,35 @@ function getAddEmployeeDetails() {
 function formValidation() {
   const nodeList = document.querySelectorAll(".input_box");
   const formFields = Array.from(nodeList);
-  return (res = formFields.every((field) => {
-    return field.checkValidity();
-  }));
+  let isFormValid=true
+ formFields.forEach((field) => {
+    let checkValid=field.checkValidity()
+    if(checkValid){
+      field.classList.remove("invalid_field")
+    }
+    else{
+      field.classList.add("invalid_field")
+      isFormValid=false
+    }
+  });
+  return isFormValid
 }
+function onchangeFormValue(){
+  const nodeList = document.querySelectorAll(".input_box");
+  const formFields = Array.from(nodeList);
+formFields.forEach(field=>{
+  field.onchange=()=>{
+    let checkValid=field.checkValidity()
+    if(checkValid){
+      field.classList.remove("invalid_field")
+    }
+    else{
+      field.classList.add("invalid_field")
+  }
+}
+})
+}
+
 /*function to add new emp
 @ param {string}checks if function is for adding */
 function saveEmpData(isAdd) {
@@ -163,6 +189,7 @@ function openModal(isAdd, rowId) {
   let checkBox = document.querySelectorAll(".check_box");
   displayCheckBoxes("checkboxes");
   let overSelect = document.getElementById("text_area");
+  onchangeFormValue()
   if (isAdd) {
     checkBox.forEach((checkbox) => {
       checkbox.checked = false;
@@ -192,16 +219,27 @@ function openModal(isAdd, rowId) {
     };
   }
 }
-//shows multiselect dropdown skills on click
-function showCheckBoxes() {
+//function to hide and unhide checkboxes onclick
+function showCheckBoxes(event) {
   let checkboxes = document.getElementById("checkboxes");
-  checkboxes.style.display = "block";
+  if (checkboxes.classList.contains("hide_checkboxes"))
+    checkboxes.classList.remove("hide_checkboxes");
+  else
+    checkboxes.classList.add("hide_checkboxes");
 }
+
 /* displays selected skills in text area by passing the skill names to text area values.
 @param {string} provides array of skill ids*/
 function setSelectedSkills(value) {
   const employeeSkills = document.getElementById("text_area");
   employeeSkills.value = defaultSkillLister(value);
+  let checkValid=employeeSkills.checkValidity()
+  if(checkValid){
+    employeeSkills.classList.remove("invalid_field")
+  }
+  else{
+    employeeSkills.classList.add("invalid_field")
+  }
 }
 // displays selected filtered skills in text area by passing the skill names to text area values.
 function setSelectedFilterSkills(value) {
@@ -248,8 +286,12 @@ function closeModal() {
   let modal = document.querySelector(".modal");
   let overlay = document.querySelector("#overlay");
   overlay.style.display = "none";
-  modal.style.display = "none";
-  checkboxes.style.display = "none";
+  modal.style.display = "none"; 
+  const nodeList = document.querySelectorAll(".input_box");
+  const formFields = Array.from(nodeList);
+  formFields.forEach((field) => {
+      field.classList.remove("invalid_field")
+  });
 }
 //opens delete confirmation box
 function openDltModal(rowId) {
@@ -318,29 +360,28 @@ function showFilterCheckBoxes(event) {
   else
     checkboxes.classList.add("hide_filter_checkboxes");
 }
-
 //function to sort employee ids
 function sortId(event,elementToSort) {
-  const employeeDetails = getLocalstorageData("employeeDetails")
+  const employeeDetails = getLocalstorageData("filteredLocalStorage")
   sortDownExp = document.getElementById("sort_down_exp")
-sortUpExp = document.getElementById("sort_up_exp")
+  sortUpExp = document.getElementById("sort_up_exp")
   sortDownId = document.getElementById("sort_down")
-sortUpId = document.getElementById("sort_up")
-sortDownName = document.getElementById("sort_down_name")
-sortUpName = document.getElementById("sort_up_name")
+  sortUpId = document.getElementById("sort_up")
+  sortDownName = document.getElementById("sort_down_name")
+  sortUpName = document.getElementById("sort_up_name")
   if (event.id == "sort_up") {
-    employeeDetails.sort((a, b) => a.elementToSort - b.elementToSort);
+    employeeDetails.sort((a, b) => a[elementToSort] - b[elementToSort]);
     sortDownId.classList.add("sort_opacity");
     sortUpId.classList.remove("sort_opacity");
   }
   else if (event.id == "sort_down") {
-    employeeDetails.sort((a, b) => b.elementToSort - a.elementToSort);
+    employeeDetails.sort((a, b) => b[elementToSort] - a[elementToSort]);
     sortDownId.classList.remove("sort_opacity");
     sortUpId.classList.add("sort_opacity");
   }
-  setLocalstorageData("employeeDetails", employeeDetails);
+  setLocalstorageData("filteredLocalStorage",employeeDetails)
   removeOldDetails();
-  getEmployeeDetails();
+  getEmployeeDetails(true);
   sortDownExp.classList.remove("sort_opacity")
   sortUpExp.classList.remove("sort_opacity")
   sortDownName.classList.remove("sort_opacity")
@@ -349,13 +390,13 @@ sortUpName = document.getElementById("sort_up_name")
 
 //function to sort names in ascending and descending order.
 function sortName(event,elementToSort) {
-  const employeeDetails = getLocalstorageData("employeeDetails");
+  const employeeDetails = getLocalstorageData("filteredLocalStorage");
   sortDownName = document.getElementById("sort_down_name")
-sortUpName = document.getElementById("sort_up_name")
-sortDownExp = document.getElementById("sort_down_exp")
-sortUpExp = document.getElementById("sort_up_exp")
-sortDownId = document.getElementById("sort_down")
-sortUpId = document.getElementById("sort_up")
+  sortUpName = document.getElementById("sort_up_name")
+  sortDownExp = document.getElementById("sort_down_exp")
+  sortUpExp = document.getElementById("sort_up_exp")
+  sortDownId = document.getElementById("sort_down")
+  sortUpId = document.getElementById("sort_up")
   if (event.id == "sort_up_name") {
     employeeDetails.sort((a, b) => {
       const nameA = a[elementToSort].toUpperCase(); // ignore upper and lowercase
@@ -387,9 +428,9 @@ sortUpId = document.getElementById("sort_up")
     });
     event.dataset.sortOrderName = 1;
   }
-  setLocalstorageData("employeeDetails", employeeDetails);
+  setLocalstorageData("filteredLocalStorage",employeeDetails)
   removeOldDetails();
-  getEmployeeDetails();
+  getEmployeeDetails(true);
   sortDownId.classList.remove("sort_opacity")
   sortUpId.classList.remove("sort_opacity")
   sortDownExp.classList.remove("sort_opacity")
@@ -397,13 +438,13 @@ sortUpId = document.getElementById("sort_up")
 }
 //function to sort experience years.
 function sortExp(event,elementToSort) {
-  const employeeDetails = getLocalstorageData("employeeDetails");
+  const employeeDetails = getLocalstorageData("filteredLocalStorage");
   sortDownExp = document.getElementById("sort_down_exp")
-sortUpExp = document.getElementById("sort_up_exp")
+  sortUpExp = document.getElementById("sort_up_exp")
   sortDownId = document.getElementById("sort_down")
-sortUpId = document.getElementById("sort_up")
-sortDownName = document.getElementById("sort_down_name")
-sortUpName = document.getElementById("sort_up_name")
+  sortUpId = document.getElementById("sort_up")
+  sortDownName = document.getElementById("sort_down_name")
+  sortUpName = document.getElementById("sort_up_name")
   if (event.id == "sort_up_exp") {
     employeeDetails.sort((a, b) => a[elementToSort]- b[elementToSort]);
     sortDownExp.classList.add("sort_opacity");
@@ -414,9 +455,9 @@ sortUpName = document.getElementById("sort_up_name")
     sortDownExp.classList.remove("sort_opacity");
     sortUpExp.classList.add("sort_opacity");
   }
-  setLocalstorageData("employeeDetails", employeeDetails);
+  setLocalstorageData("filteredLocalStorage",employeeDetails)
   removeOldDetails();
-  getEmployeeDetails();
+  getEmployeeDetails(true);
   sortDownId.classList.remove("sort_opacity")
   sortUpId.classList.remove("sort_opacity")
   sortDownName.classList.remove("sort_opacity")
