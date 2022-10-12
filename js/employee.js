@@ -20,7 +20,7 @@ function getEmployeeDetails(isFilter = false) {
     EmployeeDataToDisplay = getLocalstorageData("employeeDetails");
   }
   EmployeeDataToDisplay.forEach((employee) => {
-    fetchStoreContent("../assets/json/skills.json", "skillDetails");
+    fetchStoreContent("assets/json/skills.json", "skillDetails");
     function getSkillDetails() {
       const skillDetails = getLocalstorageData("skillDetails");
       let res = skillDetails
