@@ -3,7 +3,7 @@
         "employeeId": 1007,
         "name": "Sachin",
         "experience": 5,
-        "phone": 976539843,
+        "phone": 9765398431,
         "email": "Sachin06@gmail.com ",
         "skills": [ 1,2, 3 ]
     },
@@ -29,7 +29,7 @@
         "employeeId": 1001,
         "name": "Smitha ",
         "experience": "13",
-        "phone": 2345769788,
+        "phone": 9876543897,
         "email": "smitha06@gmail.com ",
         "skills": [5,1,2,3,4
         ]
@@ -38,7 +38,7 @@
         "employeeId": 1002,
         "name": "Kishore",
         "experience": "1",
-        "phone": 2345769864,
+        "phone": 9870684380,
         "email": "kishore06@gmail.com ",
         "skills": [5]
     },
@@ -46,7 +46,7 @@
         "employeeId": 1006,
         "name": "Karun",
         "experience": "3",
-        "phone": 2345767886,
+        "phone": 9715234678,
         "email": "kaurn88@gmail.com ",
         "skills": [5,1,4
         ]

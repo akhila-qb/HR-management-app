@@ -24,14 +24,13 @@
         <main id="main">
             <div class="container">
                 <div id="employee_list_btns">
-                    <select class="employee_list_top_btns" id="filter_btn">
-                        <option value="Java">Java</option>
-                        <option value="C">C</option>
-                        <option value="CPP">CPP</option>
-                        <option value="Python">Python</option>
-                        <option value="HTML">HTML</option>
-                        <option value="" selected hidden>Apply Filter</option>
-                    </select>
+                    <div class="emp_filter_box">
+                        <div class="selectBox" onclick="showFilterCheckBoxes(this)">
+                            <input id="text_area_filter" placeholder="Select skills">
+                        </div>
+                        <div id="filter_checkboxes" class="hide_filter_checkboxes">
+                        </div>
+                    </div>
                     <button class="employee_list_top_btns" onclick="openModal(true)" id="add_btn"><i
                             class="fa-solid fa-user-plus"></i> Add Employee</button>
                 </div>
@@ -42,13 +41,17 @@
                                 <th>
                                     <div id="id_col" class="table_col">
                                         <h3>Employee ID</h3>
-                                        <i id="sort_icon" class="fa-solid fa-sort"></i>
+                                        <i onclick="sortId(this,'employeeId')" id="sort_up"
+                                         class="fa-solid fa-sort-up"></i>
+                                         <i class="fa-solid fa-sort-down" onclick="sortId(this,'employeeId')" id="sort_down" ></i>
                                     </div>
                                 </th>
                                 <th>
                                     <div id="name_col" class="table_col">
                                         <h3>Name</h3>
-                                        <i id="sort_icon" class="fa-solid fa-sort"></i>
+                                        <i onclick="sortName(this,'name')" id="sort_up_name"
+                                         class="fa-solid fa-sort-up"></i>
+                                         <i class="fa-solid fa-sort-down" onclick="sortName(this,'name')" id="sort_down_name" ></i>
                                     </div>
                                 </th>
                                 <th>
@@ -57,7 +60,9 @@
                                 <th>
                                     <div id="exp_col" class="table_col">
                                         <h3>Experience</h3>
-                                        <i id="sort_icon" class="fa-solid fa-sort"></i>
+                                        <i onclick="sortExp(this,'experience')" id="sort_up_exp"
+                                         class="fa-solid fa-sort-up"></i>
+                                         <i class="fa-solid fa-sort-down" onclick="sortExp(this,'experience')" id="sort_down_exp" ></i>
                                     </div>
                                 </th>
                                 <th>
@@ -96,22 +101,22 @@
                                     <div class="emp_input_box">
                                         <label for="emp_name">Name </label>
                                         <input required placeholder="Enter name" type="text" id="emp_name"
-                                            class="input_box" name="emp_name"><br>                                
+                                            class="input_box" name="emp_name"><br>
                                     </div>
                                     <div class="emp_input_box">
                                         <label for="emp_exp">Experience</label>
-                                        <input required placeholder="Years of experience" type="number" id="emp_exp"
+                                        <input required placeholder="Years of experience" type="number" min="0" id="emp_exp"
                                             class="input_box" name="emp_exp"><br>
                                     </div>
                                     <div class="emp_input_box">
                                         <label for="emp_skill">Skills</label>
                                         <div class="multiselect">
-                                            <div class="selectBox" onclick="showCheckBoxes()">
-                                                <textarea required class="input_box" id="text_area"
-                                                    placeholder="Select skills"></textarea>
-                                                <div class="overSelect"></div><br>
+                                            <div class="selectBox" onclick="showCheckBoxes(this)">
+                                                <input required class="input_box" id="text_area"
+                                                    placeholder="Select skills">
+                                                <!-- <div class="overSelect"></div><br> -->
                                             </div>
-                                            <div id="checkboxes">
+                                            <div id="checkboxes" class="hide_checkboxes">
                                             </div>
                                         </div>
                                     </div>
