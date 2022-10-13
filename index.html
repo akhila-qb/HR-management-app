@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HR-homepage</title>
-    <link rel="icon" type="image/x-icon" href="../assets/images/logo.png">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/toaster.css">
+    <link rel="icon" type="image/x-icon" href="assets/images/logo.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/toaster.css">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v6.2.0/css/all.css">
 </head>
 
@@ -17,7 +17,7 @@
     <div id="main_content_box">
         <header id="header">
             <div class=" flex-box">
-                <a href="" id="logo_anchor"><img id="logo" alt="logo" src="../assets/images/logo.png"></a>
+                <a href="" id="logo_anchor"><img id="logo" alt="logo" src="assets/images/logo.png"></a>
                 <h1 id="main_heading">Human Resource Portal</h1>
             </div>
         </header>
@@ -41,17 +41,20 @@
                                 <th>
                                     <div id="id_col" class="table_col">
                                         <h3>Employee ID</h3>
-                                        <i onclick="sortId(this,'employeeId')" id="sort_up"
-                                         class="fa-solid fa-sort-up"></i>
-                                         <i class="fa-solid fa-sort-down" onclick="sortId(this,'employeeId')" id="sort_down" ></i>
+                                        <div class="i_tags">
+                                            <i onclick="sortId(this,'employeeId')" id="sort_up" class="fa-solid fa-sort-up"></i>
+                                            <i class="fa-solid fa-sort-down" onclick="sortId(this,'employeeId')" id="sort_down"></i>
+                                        </div>
                                     </div>
                                 </th>
                                 <th>
                                     <div id="name_col" class="table_col">
                                         <h3>Name</h3>
+                                        <div class="i_tags">
                                         <i onclick="sortName(this,'name')" id="sort_up_name"
                                          class="fa-solid fa-sort-up"></i>
                                          <i class="fa-solid fa-sort-down" onclick="sortName(this,'name')" id="sort_down_name" ></i>
+                                    </div>
                                     </div>
                                 </th>
                                 <th>
@@ -60,9 +63,11 @@
                                 <th>
                                     <div id="exp_col" class="table_col">
                                         <h3>Experience</h3>
+                                        <div class="i_tags">
                                         <i onclick="sortExp(this,'experience')" id="sort_up_exp"
                                          class="fa-solid fa-sort-up"></i>
                                          <i class="fa-solid fa-sort-down" onclick="sortExp(this,'experience')" id="sort_down_exp" ></i>
+                                    </div>
                                     </div>
                                 </th>
                                 <th>
@@ -151,8 +156,8 @@
             <p>Copyright @ 2020 HRM.CO, All Rights Reserved</p>
         </footer>
     </div>
-    <script src="../js/common.js"></script>
-    <script src="../js/employee.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/employee.js"></script>
     <!--Footer ends-->
 </body>
 

@@ -1,12 +1,10 @@
 /*function to fetch and store data
 @ param {string} url of json file
 @ param {string} variable to store json*/
-function fetchStoreContent(url, variableToStoreJson) {
-  fetch(url)
-    .then((response) => response.json())
-    .then((list) =>
-      localStorage.setItem(variableToStoreJson, JSON.stringify(list))
-    );
+async function fetchStoreContent(url) {
+  const response=await fetch(url)
+  const list= await response.json()
+  return list
  }
  /*function to get local storage data
  @ param {string} variable to store data*/
