@@ -3,18 +3,24 @@ let list;
 let selectedSkills = [];
 let filterArray = [];
 //calls fetch function to get JSON data
-fetchStoreContent("assets/json/employee_list.json", "employeeDetails");
-fetchStoreContent("assets/json/employee_list.json", "filteredLocalStorage");
-// setLocalstorageData("employeeDetails", employeeDetails);
+const fetchEmployeeList= fetchStoreContent("assets/json/employee_list.json")
+const fetchSkillList= fetchStoreContent("assets/json/skills.json")
+const fetchFilteredEmployeeList=fetchStoreContent("assets/json/employee_list.json")
 
-getEmployeeDetails();
-//displayFilterCheckbox();
-displayCheckBoxes("filter_checkboxes")
+Promise.all([fetchEmployeeList,fetchSkillList,fetchFilteredEmployeeList])
+.then((res)=>{
+  console.log(res);
+  localStorage.setItem('employeeDetails',JSON.stringify(res[0]))
+  localStorage.setItem('skillDetails',JSON.stringify(res[1]))
+  localStorage.setItem('filteredLocalStorage',JSON.stringify(res[2]))
+  getEmployeeDetails()
+  displayCheckBoxes("filter_checkboxes")
+})
 
 /*function to display details on table
 @ param {boolean} checks if function is calle for filtering */
 function getEmployeeDetails(isFilter = false) {
-  tbody = document.getElementById("tbody");
+  let tbody = document.getElementById("tbody");
   let EmployeeDataToDisplay;
   if (isFilter) {
     EmployeeDataToDisplay = getLocalstorageData("filteredLocalStorage");
@@ -22,7 +28,6 @@ function getEmployeeDetails(isFilter = false) {
     EmployeeDataToDisplay = getLocalstorageData("employeeDetails");
   }
   EmployeeDataToDisplay.forEach((employee) => {
-    fetchStoreContent("assets/json/skills.json", "skillDetails");
     function getSkillDetails() {
       const skillDetails = getLocalstorageData("skillDetails");
       let res = skillDetails

@@ -283,9 +283,12 @@ table {
 .table_col {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
 }
 
+.i_tags {
+  display: flex;
+}
 .table_col h3 {
   margin: 0;
   font-weight: 400;
