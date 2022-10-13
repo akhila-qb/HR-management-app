@@ -5,6 +5,8 @@ let filterArray = [];
 //calls fetch function to get JSON data
 fetchStoreContent("assets/json/employee_list.json", "employeeDetails");
 fetchStoreContent("assets/json/employee_list.json", "filteredLocalStorage");
+// setLocalstorageData("employeeDetails", employeeDetails);
+
 getEmployeeDetails();
 //displayFilterCheckbox();
 displayCheckBoxes("filter_checkboxes")

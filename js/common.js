@@ -1,8 +1,8 @@
 /*function to fetch and store data
 @ param {string} url of json file
 @ param {string} variable to store json*/
-function fetchStoreContent(url, variableToStoreJson) {
-  fetch(url)
+async function fetchStoreContent(url, variableToStoreJson) {
+  const responsse=await fetch(url)
     .then((response) => response.json())
     .then((list) =>
       localStorage.setItem(variableToStoreJson, JSON.stringify(list))
