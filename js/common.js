@@ -5,10 +5,6 @@ async function fetchStoreContent(url) {
   const response=await fetch(url)
   const list= await response.json()
   return list
-    // .then((response) => response.json())
-    // .then((list) =>
-    //   localStorage.setItem(variableToStoreJson, JSON.stringify(list))
-   // );
  }
  /*function to get local storage data
  @ param {string} variable to store data*/

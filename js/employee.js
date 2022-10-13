@@ -9,7 +9,6 @@ const fetchFilteredEmployeeList=fetchStoreContent("assets/json/employee_list.jso
 
 Promise.all([fetchEmployeeList,fetchSkillList,fetchFilteredEmployeeList])
 .then((res)=>{
-  console.log(res);
   localStorage.setItem('employeeDetails',JSON.stringify(res[0]))
   localStorage.setItem('skillDetails',JSON.stringify(res[1]))
   localStorage.setItem('filteredLocalStorage',JSON.stringify(res[2]))
